@@ -40,7 +40,3 @@ Contribuições são bem-vindas! Caso queira ajudar no desenvolvimento do Health
 3. Envie suas alterações: `git commit -m 'Adicionei uma nova feature'`.
 4. Faça o push da branch: `git push origin minha-feature`.
 5. Abra um Pull Request.
-
----
-
-Sinta-se à vontade para personalizar este README conforme a evolução do projeto. Caso precise de algo mais específico, é só pedir! 🚀
