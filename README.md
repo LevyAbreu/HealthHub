@@ -4,25 +4,23 @@ Healthub é um aplicativo Android dedicado ao monitoramento de saúde do usuári
 
 ## Funcionalidades
 
-- **Monitoramento de saúde**: Acompanhe métricas importantes como batimentos cardíacos, nível de atividade física, sono e mais.
-- **Interface intuitiva**: Navegue facilmente e visualize seus dados de saúde em um painel simplificado.
-- **Alertas e lembretes**: Receba notificações para hábitos saudáveis, como tomar água, realizar exercícios ou tomar remédios.
-- **Análises detalhadas**: Relatórios semanais ou mensais para entender melhor sua saúde e evolução.
+- **Monitoramento de saúde**: Acompanhe métricas importantes como IMC, nível de atividade física, sono e mais.
+- **Interface intuitiva**: Navegue facilmente e visualize seus dados de saúde em uma barra de status simples.
+- **Alertas e lembretes**: Receba notificações para hábitos saudáveis, como tomar água, realizar exercícios, se alimentar ou tomar remédios.
+- **Análises detalhadas**: Relatórios semanais ou para entender melhor sua saúde e evolução.
 
 ## Tecnologias Utilizadas
 
-- **Linguagem**: Kotlin
+- **Linguagem**: ReactNative
 - **Arquitetura**: MVVM (Model-View-ViewModel)
 - **Banco de Dados**: Room para armazenamento local
-- **APIs**: Uso de API para integração com dispositivos de monitoramento, como wearables
-- **Outros**: Retrofit, Coroutines e Jetpack Components
 
 ## Como Usar
 
-1. Baixe e instale o aplicativo no seu dispositivo Android.
+1. Instale o aplicativo no seu dispositivo.
 2. Crie uma conta ou faça login.
 3. Insira suas informações básicas de saúde.
-4. Conecte dispositivos externos (opcional, como smartwatches).
+4. Configure o app para seu conforto.
 5. Comece a monitorar sua saúde!
 
 ## Objetivos do Projeto
@@ -36,7 +34,7 @@ Healthub é um aplicativo Android dedicado ao monitoramento de saúde do usuári
 Contribuições são bem-vindas! Caso queira ajudar no desenvolvimento do Healthub, siga os passos:
 
 1. Faça um fork do repositório.
-2. Crie uma nova branch para suas alterações: `git checkout -b minha-feature`.
-3. Envie suas alterações: `git commit -m 'Adicionei uma nova feature'`.
-4. Faça o push da branch: `git push origin minha-feature`.
+2. Crie uma nova branch para suas alterações.
+3. Envie suas alterações.
+4. Faça o push da branch.
 5. Abra um Pull Request.
