@@ -787,3 +787,107 @@ footer {
   }
 }
 
+
+
+/* Estilos específicos para a página de IMC */
+.imc-content {
+  padding: 60px 0;
+  background: #f8f9fa;
+}
+
+.imc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.imc-resultado-texto {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.imc-resultado-texto p {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.imc-resultado-texto span {
+  font-weight: 700;
+  color: #0072ff;
+}
+
+
+
+/* Estilos para página de perfil */
+.perfil-content {
+  padding: 60px 0;
+  background: #f8f9fa;
+}
+
+.perfil-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.sync-info p {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.sync-info span {
+  font-weight: 600;
+}
+
+.sync-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+}
+
+.config-item {
+  margin-bottom: 15px;
+}
+
+.config-item label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.config-item input[type="checkbox"] {
+  width: auto;
+}
+
+.config-item input[type="number"] {
+  margin-top: 5px;
+}
+
+.feedback-message.error {
+  background: #f44336;
+}
+
+/* Responsividade para perfil */
+@media (max-width: 768px) {
+  .sync-actions {
+    flex-direction: column;
+  }
+  
+  .sync-actions .btn {
+    width: 100%;
+  }
+}
+

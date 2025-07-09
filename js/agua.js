@@ -1,3 +1,6 @@
+import firebaseService from './firebase-service.js';
+import stateManager from './state-manager.js';
+
 class ControleAgua {
     constructor() {
         this.registros = JSON.parse(localStorage.getItem('registrosAgua')) || [];
@@ -7,16 +10,49 @@ class ControleAgua {
             intervalo: 60
         };
         this.intervalId = null;
+        this.firebaseService = firebaseService;
+        this.stateManager = stateManager;
         this.init();
     }
 
     init() {
         this.setupEventListeners();
+        this.setupStateListeners();
         this.carregarConfiguracoes();
         this.atualizarVisualizacao();
         this.atualizarEstatisticas();
         this.renderizarHistorico();
-        this.configurarLembretes();
+    }
+
+    setupStateListeners() {
+        // Escutar mudanças nas metas
+        this.stateManager.subscribe('metas', (metas) => {
+            this.atualizarMetaAgua(metas.agua);
+        });
+
+        // Escutar mudanças no consumo
+        this.stateManager.subscribe('consumo', (consumo) => {
+            this.atualizarEstatisticasConsumo(consumo);
+        });
+    }
+
+    atualizarMetaAgua(metaAgua) {
+        this.configuracoes.metaDiaria = metaAgua;
+        this.salvarConfiguracoes();
+        this.atualizarVisualizacao();
+        this.atualizarEstatisticas();
+    }
+
+    atualizarEstatisticasConsumo(consumo) {
+        // Atualizar dados locais se necessário
+        this.registros = consumo.registrosAgua || [];
+        this.atualizarVisualizacao();
+        this.atualizarEstatisticas();
+        this.renderizarHistorico();
+        
+        // Atualizar estado global
+        this.stateManager.updateConsumo();
+    }
     }
 
     setupEventListeners() {
@@ -114,17 +150,33 @@ class ControleAgua {
         document.getElementById('aguaForm').reset();
     }
 
-    adicionarAgua(quantidade, tipo = 'agua') {
+    async adicionarAgua(quantidade, tipo = 'agua') {
         const registro = {
             id: Date.now(),
             quantidade: quantidade,
             tipo: tipo,
             data: new Date().toISOString().split('T')[0],
-            hora: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
+            hora: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
+            sincronizado: false
         };
 
+        // Adicionar ao localStorage
         this.registros.push(registro);
         this.salvarDados();
+        
+        // Tentar sincronizar com Firebase
+        try {
+            await this.firebaseService.adicionarBebida({
+                tipo: tipo,
+                quantidade: quantidade
+            });
+            registro.sincronizado = true;
+            this.salvarDados();
+        } catch (error) {
+            console.error('Erro ao sincronizar com Firebase:', error);
+            // Dados ficam no localStorage para sincronização posterior
+        }
+        
         this.atualizarVisualizacao();
         this.atualizarEstatisticas();
         this.renderizarHistorico();
@@ -140,6 +192,9 @@ class ControleAgua {
         } else {
             this.mostrarFeedback(`💧 +${quantidade}ml registrados! Continue assim!`);
         }
+        
+        // Atualizar estado global
+        this.stateManager.updateConsumo();
     }
 
     removerRegistro(id) {
@@ -149,6 +204,9 @@ class ControleAgua {
         this.atualizarEstatisticas();
         this.renderizarHistorico();
         this.mostrarFeedback('Registro removido!');
+        
+        // Atualizar estado global
+        this.stateManager.updateConsumo();
     }
 
     getAguaDoDia() {

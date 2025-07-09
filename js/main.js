@@ -1,5 +1,9 @@
+import stateManager from './state-manager.js';
+
 document.addEventListener("DOMContentLoaded", () => {
     const canvas = document.getElementById("imcSerasaGauge");
+    if (!canvas) return;
+    
     const ctx = canvas.getContext("2d");
 
     const centerX = canvas.width / 2;
@@ -82,29 +86,45 @@ document.addEventListener("DOMContentLoaded", () => {
         ctx.fillText(faixaAtual ? faixaAtual.label : "", centerX, centerY - 30);
     }
 
+    // Escutar mudanças nos dados do usuário
+    stateManager.subscribe('usuario', (usuario) => {
+        if (usuario.imc && usuario.imc > 0) {
+            drawGauge(usuario.imc);
+        }
+    });
+
     // Inicializa o gauge com um valor padrão (ou 0)
     drawGauge(0);
 
     const imcForm = document.getElementById("imcForm");
-    imcForm.addEventListener("submit", (e) => {
-        e.preventDefault();
+    if (imcForm) {
+        imcForm.addEventListener("submit", (e) => {
+            e.preventDefault();
 
-        const peso = parseFloat(document.getElementById("peso").value);
-        const altura = parseFloat(document.getElementById("altura").value);
+            const peso = parseFloat(document.getElementById("peso").value);
+            const altura = parseFloat(document.getElementById("altura").value);
 
-        if (isNaN(peso) || isNaN(altura) || altura === 0) {
-            alert("Por favor, insira valores válidos para peso e altura.");
-            return;
-        }
+            if (isNaN(peso) || isNaN(altura) || altura === 0) {
+                alert("Por favor, insira valores válidos para peso e altura.");
+                return;
+            }
 
-        const imcCalculado = peso / (altura * altura);
-        const faixa = getFaixaDoIMC(imcCalculado);
+            const imcCalculado = peso / (altura * altura);
+            const faixa = getFaixaDoIMC(imcCalculado);
 
-        document.getElementById("imcValor").textContent = imcCalculado.toFixed(2);
-        document.getElementById("imcDiagnostico").textContent = faixa ? faixa.label : "";
-        document.getElementById("imcDiagnostico").style.color = faixa ? faixa.cor : "#333";
+            document.getElementById("imcValor").textContent = imcCalculado.toFixed(2);
+            document.getElementById("imcDiagnostico").textContent = faixa ? faixa.label : "";
+            document.getElementById("imcDiagnostico").style.color = faixa ? faixa.cor : "#333";
 
-        drawGauge(imcCalculado);
-    });
+            drawGauge(imcCalculado);
+            
+            // Atualizar dados do usuário no estado global
+            const dadosUsuario = {
+                peso: peso,
+                altura: altura
+            };
+            stateManager.updateUsuario(dadosUsuario);
+        });
+    }
 });
 

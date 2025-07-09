@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário - HealthHub</title>
+    <link rel="shortcut icon" href="assets/health_logo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container top-bar-container">
+            <div class="logo">
+                <img src="assets/health_logo.png" alt="logo">
+                <h1 class="health">Health</h1><h1 class="hub">Hub</h1>
+            </div>
+            <div class="right-side">
+                <div class="sup">
+                    <div class="contact-info">
+                        <span>
+                            <i class="fas fa-phone-alt">
+                                <img src="https://img.icons8.com/?size=100&id=9730&format=png&color=00BCD4" alt="cell-phone">
+                            </i>
+                            +55 99 99999-9999
+                        </span>
+                        <span>
+                            <i class="fas fa-envelope">
+                                <img src="https://img.icons8.com/?size=100&id=12623&format=png&color=00BCD4" alt="email">
+                            </i>
+                            contato@healthhub.com
+                        </span>
+                    </div>
+                    <div class="social-icons">
+                        <i class="fab fa-facebook"><img src="https://img.icons8.com/?size=100&id=phOKFKYpe00C&format=png&color=FFFFFF" alt="Facebook"></i>
+                        <i class="fab fa-twitter"><img src="https://img.icons8.com/?size=100&id=106163&format=png&color=FFFFFF" alt="Twitter"></i>
+                        <i class="fab fa-instagram"><img src="https://img.icons8.com/?size=100&id=32320&format=png&color=FFFFFF" alt="Instagram"></i>
+                        <i class="fab fa-linkedin"><img src="https://img.icons8.com/?size=100&id=8808&format=png&color=FFFFFF" alt="LinkedIn"></i>
+                    </div>
+                </div>
+                <div class="inf">
+                    <nav>
+                        <ul class="nav-links">
+                            <li><a href="index.html">Início</a></li>
+                            <li><a href="exercicios.html">Exercícios</a></li>
+                            <li><a href="imc.html">IMC e Saúde</a></li>
+                            <li><a href="alimentacao.html">Alimentação</a></li>
+                            <li><a href="agua.html">Hidratação</a></li>
+                            <li><a href="perfil.html" class="active">Perfil</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Perfil do Usuário</h1>
+            <p>Gerencie suas informações pessoais e configurações</p>
+        </div>
+    </section>
+
+    <section class="perfil-content">
+        <div class="container">
+            <div class="perfil-grid">
+                <!-- Informações Pessoais -->
+                <div class="card">
+                    <h3>Informações Pessoais</h3>
+                    <form id="perfilForm">
+                        <div class="form-group">
+                            <label for="nome">Nome:</label>
+                            <input type="text" id="nome" placeholder="Seu nome completo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="idade">Idade:</label>
+                            <input type="number" id="idade" placeholder="25" min="1" max="120" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="peso">Peso (kg):</label>
+                            <input type="number" id="peso" placeholder="70" step="0.1" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="altura">Altura (m):</label>
+                            <input type="number" id="altura" placeholder="1.75" step="0.01" min="0.5" max="2.5" required>
+                        </div>
+                        <button type="submit" class="btn">Salvar Informações</button>
+                    </form>
+                </div>
+
+                <!-- Estatísticas Gerais -->
+                <div class="card">
+                    <h3>Suas Estatísticas</h3>
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <span class="stat-numero" id="imcAtual">--</span>
+                            <span class="stat-label">IMC Atual</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-numero" id="totalCalorias">0</span>
+                            <span class="stat-label">Calorias esta semana</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-numero" id="totalAgua">0L</span>
+                            <span class="stat-label">Água esta semana</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-numero" id="diasAtivos">0</span>
+                            <span class="stat-label">Dias ativos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sincronização -->
+                <div class="card">
+                    <h3>Sincronização de Dados</h3>
+                    <div class="sync-info">
+                        <p>Status: <span id="statusSync">Verificando...</span></p>
+                        <p>Última sincronização: <span id="ultimaSync">--</span></p>
+                        <p>Dados pendentes: <span id="dadosPendentes">0</span></p>
+                    </div>
+                    <div class="sync-actions">
+                        <button onclick="perfilManager.sincronizarAgora()" class="btn">Sincronizar Agora</button>
+                        <button onclick="perfilManager.exportarDados()" class="btn btn-secondary">Exportar Dados</button>
+                    </div>
+                </div>
+
+                <!-- Configurações -->
+                <div class="card">
+                    <h3>Configurações</h3>
+                    <div class="config-item">
+                        <label>
+                            <input type="checkbox" id="notificacoes"> 
+                            Receber notificações
+                        </label>
+                    </div>
+                    <div class="config-item">
+                        <label>
+                            <input type="checkbox" id="syncAuto"> 
+                            Sincronização automática
+                        </label>
+                    </div>
+                    <div class="config-item">
+                        <label for="metaCalorias">Meta diária de calorias:</label>
+                        <input type="number" id="metaCalorias" value="2000" min="1000" max="5000">
+                    </div>
+                    <div class="config-item">
+                        <label for="metaAgua">Meta diária de água (ml):</label>
+                        <input type="number" id="metaAgua" value="2000" min="1000" max="5000">
+                    </div>
+                    <button onclick="perfilManager.salvarConfiguracoes()" class="btn">Salvar Configurações</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 HealthHub - Todos os direitos reservados.</p>
+    </footer>
+
+    <script type="module" src="js/state-manager.js"></script>
+    <script type="module" src="js/perfil.js"></script>
+</body>
+</html>
+
