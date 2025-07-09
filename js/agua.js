@@ -53,7 +53,6 @@ class ControleAgua {
         // Atualizar estado global
         this.stateManager.updateConsumo();
     }
-    }
 
     setupEventListeners() {
         const form = document.getElementById('aguaForm');
@@ -375,4 +374,3 @@ document.addEventListener('DOMContentLoaded', () => {
         Notification.requestPermission();
     }
 });
-
