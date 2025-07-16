@@ -1,9 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HealthHub</title>
+    <title>HealthHub - Cuide da sua saúde de forma inteligente</title>
+    <meta name="description" content="O HealthHub ajuda você a acompanhar sua saúde, exercícios e evolução com relatórios simples e acessíveis. Monitore IMC, dieta, hidratação e exercícios personalizados.">
+    <meta name="keywords" content="saúde, bem-estar, IMC, exercícios, dieta, hidratação, monitoramento saúde">
+    <meta name="author" content="HealthHub">
+    <meta property="og:title" content="HealthHub - Cuide da sua saúde de forma inteligente">
+    <meta property="og:description" content="Monitore sua saúde, exercícios e evolução com relatórios simples e acessíveis.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://levyabreu.github.io/HealthHub/">
+    <meta property="og:image" content="assets/health_logo.png">
     <link rel="shortcut icon" href="assets/health_logo.png">
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,10 +19,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="top-bar">
+    <header class="top-bar">
       <div class="container top-bar-container">
         <div class="logo">
-          <img src="assets/health_logo.png" alt="logo">
+          <img src="assets/health_logo.png" alt="HealthHub Logo">
           <h1 class="health">Health</h1><h1 class="hub">Hub</h1>
         </div>
         <div class="right-side">
@@ -22,83 +30,96 @@
             <div class="contact-info">
               <span>
                 <i class="fas fa-phone-alt">
-                  <img src="https://img.icons8.com/?size=100&id=9730&format=png&color=00BCD4" alt="cell-phone">
+                  <img src="https://img.icons8.com/?size=100&id=9730&format=png&color=00BCD4" alt="Telefone">
                 </i>
                 +55 99 99999-9999
               </span>
               <span>
                 <i class="fas fa-envelope">
-                  <img src="https://img.icons8.com/?size=100&id=12623&format=png&color=00BCD4" alt="email">
+                  <img src="https://img.icons8.com/?size=100&id=12623&format=png&color=00BCD4" alt="Email">
                 </i>
                 contato@healthhub.com
               </span>
             </div>            
             <div class="social-icons">
-              <i class="fab fa-facebook"><img src="https://img.icons8.com/?size=100&id=phOKFKYpe00C&format=png&color=FFFFFF" alt="Facebook"></i>
-              <i class="fab fa-twitter"><img src="https://img.icons8.com/?size=100&id=106163&format=png&color=FFFFFF" alt="Twitter"></i>
-              <i class="fab fa-instagram"><img src="https://img.icons8.com/?size=100&id=32320&format=png&color=FFFFFF" alt="Instagram"></i>
-              <i class="fab fa-linkedin"><img src="https://img.icons8.com/?size=100&id=8808&format=png&color=FFFFFF" alt="LinkedIn"></i>
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"><img src="https://img.icons8.com/?size=100&id=phOKFKYpe00C&format=png&color=FFFFFF" alt="Facebook"></i></a>
+              <a href="#" aria-label="Twitter"><i class="fab fa-twitter"><img src="https://img.icons8.com/?size=100&id=106163&format=png&color=FFFFFF" alt="Twitter"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"><img src="https://img.icons8.com/?size=100&id=32320&format=png&color=FFFFFF" alt="Instagram"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"><img src="https://img.icons8.com/?size=100&id=8808&format=png&color=FFFFFF" alt="LinkedIn"></i></a>
             </div>
           </div>
           <div class="inf">
-            <nav>
+            <nav role="navigation" aria-label="Menu principal">
               <ul class="nav-links">
                 <li><a href="index.html" class="active">Início</a></li>
                 <li><a href="exercicios.html">Exercícios</a></li>
                 <li><a href="imc.html">IMC e Saúde</a></li>
                 <li><a href="alimentacao.html">Alimentação</a></li>
                 <li><a href="agua.html">Hidratação</a></li>
+                <li><a href="saude-mental.html">Saúde Mental</a></li>
+                <li><a href="sono.html">Sono</a></li>
                 <li><a href="perfil.html">Perfil</a></li>
               </ul>
             </nav>
           </div>
         </div>
       </div>
-    </div>
+    </header>
 
-    <section class="hero">
-      <div class="container hero-content">
-        <img class="hero-arrow" src="https://img.icons8.com/?size=100&id=26144&format=png&color=FFFFFF" alt="left-arrow">
-        <div class="hero-text">
-          <h2>Cuide da sua saúde de forma inteligente</h2>
-          <p>O HealthHub ajuda você a acompanhar sua saúde, seus exercícios e sua evolução com relatórios simples e acessíveis. Comece hoje mesmo!</p>
-          <a href="#" class="btn">Comece Agora</a>
+    <main>
+      <section class="hero">
+        <div class="container hero-content">
+          <img class="hero-arrow" src="https://img.icons8.com/?size=100&id=26144&format=png&color=FFFFFF" alt="Seta esquerda">
+          <div class="hero-text">
+            <h2>Cuide da sua saúde de forma inteligente</h2>
+            <p>O HealthHub ajuda você a acompanhar sua saúde, seus exercícios e sua evolução com relatórios simples e acessíveis. Comece hoje mesmo!</p>
+            <a href="#features" class="btn">Comece Agora</a>
+          </div>
+          <div class="hero-image">
+            <img src="assets/doctor.png" alt="Médico profissional" />
+          </div>
+          <img class="hero-arrow" src="https://img.icons8.com/?size=100&id=26138&format=png&color=FFFFFF" alt="Seta direita">
         </div>
-        <div class="hero-image">
-          <img src="assets/doctor.png" alt="Doctor" />
-        </div>
-        <img class="hero-arrow" src="https://img.icons8.com/?size=100&id=26138&format=png&color=FFFFFF" alt="right-arrow">
-      </div>
-    </section>
+      </section>
 
-    <section class="features">
-      <div class="container">
-        <h2>Funcionalidades do HealthHub</h2>
-        <div class="feature-list">
-          <div class="feature-item">
-            <i class="fas fa-heartbeat"><img src="https://img.icons8.com/?size=100&id=35588&format=png&color=00BCD4" alt=""></i>
-            <h3>Cálculo de IMC</h3>
-            <p>Descubra seu Índice de Massa Corporal e receba recomendações personalizadas para melhorar sua saúde.</p>
-          </div>
-          <div class="feature-item">
-            <i class="fas fa-running"><img src="https://img.icons8.com/?size=100&id=9773&format=png&color=00BCD4" alt=""></i>
-            <h3>Exercícios Personalizados</h3>
-            <p>Receba treinos personalizados com base no seu perfil, metas e histórico de atividades físicas.</p>
-          </div>
-          <div class="feature-item">
-            <i class="fas fa-diet"><img src="https://img.icons8.com/?size=100&id=8441&format=png&color=00BCD4" alt=""></i>
-            <h3>Monitoramento de Dieta</h3>
-            <p>Registre suas refeições, conte calorias automaticamente e acompanhe sua nutrição de forma prática e eficiente.</p>
-          </div>
-          <div class="feature-item">
-            <i class="fas fa-weight"><img src="https://img.icons8.com/?size=100&id=9021&format=png&color=00BCD4" alt=""></i>
-            <h3>Monitoramento de água</h3>
-            <p>Registre seu consumo diário de água e mantenha-se hidratado com metas personalizadas.</p>
-          </p>
+      <section id="features" class="features">
+        <div class="container">
+          <h2>Funcionalidades do HealthHub</h2>
+          <div class="feature-list">
+            <article class="feature-item">
+              <i class="fas fa-heartbeat"><img src="https://img.icons8.com/?size=100&id=35588&format=png&color=00BCD4" alt="Ícone coração"></i>
+              <h3>Cálculo de IMC</h3>
+              <p>Descubra seu Índice de Massa Corporal e receba recomendações personalizadas para melhorar sua saúde.</p>
+            </article>
+            <article class="feature-item">
+              <i class="fas fa-running"><img src="https://img.icons8.com/?size=100&id=9773&format=png&color=00BCD4" alt="Ícone exercício"></i>
+              <h3>Exercícios Personalizados</h3>
+              <p>Receba treinos personalizados com base no seu perfil, metas e histórico de atividades físicas.</p>
+            </article>
+            <article class="feature-item">
+              <i class="fas fa-diet"><img src="https://img.icons8.com/?size=100&id=8441&format=png&color=00BCD4" alt="Ícone alimentação"></i>
+              <h3>Monitoramento de Dieta</h3>
+              <p>Registre suas refeições, conte calorias automaticamente e acompanhe sua nutrição de forma prática e eficiente.</p>
+            </article>
+            <article class="feature-item">
+              <i class="fas fa-weight"><img src="https://img.icons8.com/?size=100&id=9021&format=png&color=00BCD4" alt="Ícone hidratação"></i>
+              <h3>Monitoramento de Água</h3>
+              <p>Registre seu consumo diário de água e mantenha-se hidratado com metas personalizadas.</p>
+            </article>
+            <article class="feature-item">
+              <i class="fas fa-brain"><img src="https://img.icons8.com/?size=100&id=7859&format=png&color=00BCD4" alt="Ícone saúde mental"></i>
+              <h3>Saúde Mental</h3>
+              <p>Cuide da sua mente com exercícios de respiração, meditação guiada e monitoramento do humor diário.</p>
+            </article>
+            <article class="feature-item">
+              <i class="fas fa-moon"><img src="https://img.icons8.com/?size=100&id=7880&format=png&color=00BCD4" alt="Ícone sono"></i>
+              <h3>Monitoramento de Sono</h3>
+              <p>Acompanhe e melhore a qualidade do seu sono com registro de horários e análise de padrões.</p>
+            </article>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <footer>
       <div class="container">

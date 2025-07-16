@@ -10,8 +10,22 @@ class ControleAgua {
             intervalo: 60
         };
         this.intervalId = null;
-        this.firebaseService = firebaseService;
-        this.stateManager = stateManager;
+        
+        // Verificar se os módulos estão disponíveis
+        try {
+            this.firebaseService = firebaseService;
+        } catch (e) {
+            console.warn('Firebase service não disponível:', e);
+            this.firebaseService = null;
+        }
+        
+        try {
+            this.stateManager = stateManager;
+        } catch (e) {
+            console.warn('State manager não disponível:', e);
+            this.stateManager = null;
+        }
+        
         this.init();
     }
 
@@ -25,15 +39,17 @@ class ControleAgua {
     }
 
     setupStateListeners() {
-        // Escutar mudanças nas metas
-        this.stateManager.subscribe('metas', (metas) => {
-            this.atualizarMetaAgua(metas.agua);
-        });
+        // Escutar mudanças nas metas apenas se stateManager estiver disponível
+        if (this.stateManager) {
+            this.stateManager.subscribe('metas', (metas) => {
+                this.atualizarMetaAgua(metas.agua);
+            });
 
-        // Escutar mudanças no consumo
-        this.stateManager.subscribe('consumo', (consumo) => {
-            this.atualizarEstatisticasConsumo(consumo);
-        });
+            // Escutar mudanças no consumo
+            this.stateManager.subscribe('consumo', (consumo) => {
+                this.atualizarEstatisticasConsumo(consumo);
+            });
+        }
     }
 
     atualizarMetaAgua(metaAgua) {
@@ -50,8 +66,10 @@ class ControleAgua {
         this.atualizarEstatisticas();
         this.renderizarHistorico();
         
-        // Atualizar estado global
-        this.stateManager.updateConsumo();
+        // Atualizar estado global apenas se stateManager estiver disponível
+        if (this.stateManager) {
+            this.stateManager.updateConsumo();
+        }
     }
 
     setupEventListeners() {
@@ -163,17 +181,19 @@ class ControleAgua {
         this.registros.push(registro);
         this.salvarDados();
         
-        // Tentar sincronizar com Firebase
-        try {
-            await this.firebaseService.adicionarBebida({
-                tipo: tipo,
-                quantidade: quantidade
-            });
-            registro.sincronizado = true;
-            this.salvarDados();
-        } catch (error) {
-            console.error('Erro ao sincronizar com Firebase:', error);
-            // Dados ficam no localStorage para sincronização posterior
+        // Tentar sincronizar com Firebase apenas se disponível
+        if (this.firebaseService) {
+            try {
+                await this.firebaseService.adicionarBebida({
+                    tipo: tipo,
+                    quantidade: quantidade
+                });
+                registro.sincronizado = true;
+                this.salvarDados();
+            } catch (error) {
+                console.error('Erro ao sincronizar com Firebase:', error);
+                // Dados ficam no localStorage para sincronização posterior
+            }
         }
         
         this.atualizarVisualizacao();
@@ -192,8 +212,10 @@ class ControleAgua {
             this.mostrarFeedback(`💧 +${quantidade}ml registrados! Continue assim!`);
         }
         
-        // Atualizar estado global
-        this.stateManager.updateConsumo();
+        // Atualizar estado global apenas se stateManager estiver disponível
+        if (this.stateManager) {
+            this.stateManager.updateConsumo();
+        }
     }
 
     removerRegistro(id) {
@@ -204,8 +226,10 @@ class ControleAgua {
         this.renderizarHistorico();
         this.mostrarFeedback('Registro removido!');
         
-        // Atualizar estado global
-        this.stateManager.updateConsumo();
+        // Atualizar estado global apenas se stateManager estiver disponível
+        if (this.stateManager) {
+            this.stateManager.updateConsumo();
+        }
     }
 
     getAguaDoDia() {
@@ -223,7 +247,7 @@ class ControleAgua {
         document.querySelector('.agua-meta').textContent = `/ ${this.configuracoes.metaDiaria}ml`;
         document.getElementById('aguaPorcentagem').textContent = `${Math.round(porcentagem)}%`;
         
-        // Atualizar visualização do copo
+        // Copo
         const aguaFill = document.getElementById('aguaFill');
         aguaFill.style.height = `${porcentagem}%`;
         
@@ -367,9 +391,16 @@ class ControleAgua {
 
 // Inicializar quando a página carregar
 document.addEventListener('DOMContentLoaded', () => {
+    // Verificar se os módulos estão disponíveis
+    if (typeof firebaseService === 'undefined') {
+        console.warn('Firebase service não disponível, usando modo offline');
+    }
+    if (typeof stateManager === 'undefined') {
+        console.warn('State manager não disponível, usando modo local');
+    }
+    
     window.controleAgua = new ControleAgua();
     
-    // Solicitar permissão para notificações
     if ('Notification' in window && Notification.permission === 'default') {
         Notification.requestPermission();
     }
