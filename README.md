@@ -1,117 +1,110 @@
-# HealthHub - Monitoramento da Saúde
+# HealthHub 🩺🌿
 
-## Descrição do Projeto
+## Visão Geral
 
-O HealthHub é um sistema web completo para monitoramento da saúde que permite aos usuários acompanhar diversos aspectos do seu bem-estar de forma integrada e intuitiva. O projeto foi desenvolvido com HTML, CSS e JavaScript vanilla, oferecendo uma experiência responsiva e moderna.
+O **HealthHub** é um sistema web de monitoramento da saúde que integra funcionalidades essenciais para o bem-estar diário do usuário. O projeto oferece uma interface visual agradável e acessível, permitindo acompanhar aspectos como alimentação, atividades físicas, hidratação e IMC.
 
-## Funcionalidades 
+> 💻 Acesse a versão online: [levyabreu.github.io/HealthHub](https://levyabreu.github.io/HealthHub/)
 
-#### 1. Controle Alimentar
-- Registro de refeições por tipo (café da manhã, almoço, lanche, jantar, ceia)
-- Cálculo automático de calorias baseado na quantidade e tipo de alimento
-- Acompanhamento da meta diária de calorias
-- Barra de progresso visual
-- Histórico de refeições do dia
-- Armazenamento local dos dados
+---
 
-#### 2. Gerenciamento de Exercícios 
-- Registro de atividades físicas com 12 tipos diferentes
-- Controle de duração e intensidade
-- Cálculo automático de calorias queimadas
-- Metas semanais (exercícios, calorias, tempo)
+## Funcionalidades Atuais
+
+### ✅ IMC (Índice de Massa Corporal)
+- Cálculo de IMC com base na altura e peso informados
+- Feedback visual e textual de acordo com a classificação (baixo peso, normal, sobrepeso, etc.)
+- Indicador gráfico dinâmico com cores
+
+### ✅ Controle de Alimentação
+- Registro das refeições por categoria (café da manhã, almoço, etc.)
+- Cálculo automático de calorias com base nos alimentos informados
+- Barra de progresso da meta diária de calorias
+- Histórico de refeições no dia atual
+- Armazenamento local (LocalStorage)
+
+### ✅ Monitoramento de Hidratação
+- Visual de copo d'água preenchível
+- Botões de registro rápido (250ml, 500ml, 750ml)
+- Meta diária ajustável
+- Exibição da quantidade ingerida e da meta restante
+- Histórico salvo no navegador
+
+### ✅ Registro de Atividades Físicas
+- Cadastro de tipos de exercícios com tempo de execução
+- Cálculo estimado de calorias gastas
+- Barra de progresso de metas
 - Filtros por período (hoje, semana, mês)
-- Estatísticas detalhadas
-- Sistema de progresso visual
 
-#### 3. Controle de Hidratação
-- Visualização em formato de copo com marcações
-- Botões rápidos para quantidades comuns (250ml, 500ml, 750ml)
-- Registro personalizado com diferentes tipos de líquidos
-- Sistema de lembretes configurável
-- Notificações do navegador
-- Estatísticas semanais
-- Meta diária configurável
+---
+
+## Tecnologias Utilizadas
+
+- **HTML5** – Estrutura semântica
+- **CSS3** – Layout responsivo com Flexbox e animações
+- **JavaScript (ES6)** – Lógica de negócio e manipulação de dados
+- **LocalStorage API** – Persistência dos dados no navegador
+
+---
 
 ## Estrutura do Projeto
 
 ```
-healthhub-project/
-├── assets/
-│   ├── background.jpg
-│   ├── doctor.png
-│   └── health_logo.png
-├── css/
-│   └── style.css
-├── js/
-│   ├── main.js (IMC)
-│   ├── alimentacao.js
-│   ├── exercicios.js
-│   └── agua.js
+
+HealthHub/
+├── assets/             # Imagens e ícones
+├── css/                # Arquivos de estilo
+├── js/                 # Lógica separada por funcionalidade
+│   ├── main.js         # Cálculo de IMC
+│   ├── alimentacao.js  # Controle de refeições
+│   ├── exercicios.js   # Exercícios físicos
+│   └── agua.js         # Hidratação
 ├── index.html
 ├── imc.html
 ├── alimentacao.html
 ├── exercicios.html
 └── agua.html
+
 ```
 
-## Tecnologias Utilizadas
-
-- **HTML5**: Estrutura semântica e acessível
-- **CSS3**: Design responsivo com Flexbox e Grid
-- **JavaScript ES6+**: Funcionalidades interativas e armazenamento local
-- **LocalStorage**: Persistência de dados no navegador
-- **Notification API**: Sistema de lembretes
-
-## Características Técnicas
-
-### Design Responsivo
-- Layout adaptável para desktop, tablet e mobile
-- Grid system flexível
-- Componentes que se reorganizam automaticamente
-
-### Experiência do Usuário
-- Interface intuitiva e moderna
-- Feedback visual imediato
-- Animações suaves
-- Estados de loading e feedback
-
-### Armazenamento de Dados
-- Todos os dados são salvos localmente no navegador
-- Estrutura JSON organizada por funcionalidade
-- Dados persistem entre sessões
-
-## Funcionalidades Avançadas
-
-### Sistema de Notificações
-- Lembretes automáticos de hidratação
-- Permissão do usuário para notificações
-- Intervalos configuráveis
-
-### Cálculos Automáticos
-- Calorias de alimentos baseadas em quantidade
-- Calorias queimadas por exercício e intensidade
-- Progresso de metas em tempo real
-
-### Visualizações Interativas
-- Gauge de IMC com cores dinâmicas
-- Copo de água com preenchimento animado
-- Barras de progresso responsivas
+---
 
 ## Como Usar
 
-1. Abra o arquivo `index.html` em um navegador web
-2. Navegue pelas diferentes seções usando o menu superior
-3. Registre suas atividades em cada módulo
-4. Acompanhe seu progresso através das estatísticas
+1. Clone ou baixe o repositório
+2. Abra o arquivo `index.html` em qualquer navegador moderno
+3. Navegue pelas seções no menu superior
+4. Comece a registrar seus dados e acompanhar seu progresso
 
-## Próximas Funcionalidades
+---
 
-- **Monitoramento de Exames**: Registro e acompanhamento de consultas médicas
-- **Alergias e Intolerâncias**: Cadastro de restrições alimentares
+## Melhorias Futuras (em desenvolvimento)
+
+- 📋 Módulo de exames e histórico clínico
+- 🚫 Registro de alergias e restrições alimentares
+- 🔔 Lembretes de hidratação via notificação do navegador
+- 📊 Relatórios e gráficos mais detalhados
+
+---
 
 ## Compatibilidade
 
-- Chrome 60+
-- Firefox 55+
-- Safari 12+
-- Edge 79+
+✅ Totalmente funcional nos principais navegadores:
+
+- Google Chrome
+- Mozilla Firefox
+- Microsoft Edge
+- Safari
+
+---
+
+## Autor
+
+Desenvolvido por **Levy Abreu**  
+📎 [Portfólio](https://levyabreu.github.io) | 📫 levyabreu@gmail.com
+
+---
+
+## Licença
+
+Este projeto está sob a licença MIT.  
+Sinta-se livre para estudar, modificar e usar com créditos ao autor. 😉

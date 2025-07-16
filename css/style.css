@@ -202,15 +202,196 @@ i img {
   margin-bottom: 10px;
 }
 
+/* Seção de Parceria */
+.partnership-section {
+  background: linear-gradient(135deg, #6a1b9a, #4a148c);
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.partnership-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(106, 27, 154, 0.9), rgba(74, 20, 140, 0.9));
+  z-index: 1;
+}
+
+.partnership-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.partnership-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.partnership-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.btn-partnership {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 15px 30px;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  display: inline-block;
+  font-size: 1.1rem;
+}
+
+.btn-partnership:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
 footer {
   background: #004d80;
   color: white;
-  text-align: center;
-  padding: 20px 0;
-  margin-top: 40px;
+  padding: 60px 0 0 0;
+  margin-top: 0;
 }
 
-/* Footer mobile com contatos e redes sociais */
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 60px;
+  margin-bottom: 40px;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.footer-logo img {
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+}
+
+.brand-text {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.brand-text .health {
+  color: #00bcd4;
+}
+
+.brand-text .hub {
+  color: white;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.footer-column h4 {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.footer-column ul {
+  list-style: none;
+}
+
+.footer-column ul li {
+  margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+  color: #00bcd4;
+}
+
+.footer-social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.footer-social-icons a {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.footer-social-icons a:hover {
+  transform: scale(1.1);
+}
+
+.footer-social-icons img {
+  width: 24px;
+  height: 24px;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 20px 0;
+}
+
+.footer-bottom-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  margin: 0;
+}
+
+.footer-bottom-links a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-bottom-links a:hover {
+  color: #00bcd4;
+}
+
+/* Footer mobile */
 .footer-mobile-content {
   display: none;
 }
@@ -887,8 +1068,230 @@ footer {
 }
 
 /* RESPONSIVIDADE MOBILE */
-@media (max-width: 768px) {
-  /* Layout geral mobile */
+@media (max-width: 480px) {
+  /* Layout geral mobile pequeno */
+  .container {
+    padding: 0 10px;
+  }
+
+  /* Header mobile - reorganização completa */
+  .top-bar-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .logo {
+    padding: 10px 15px;
+    justify-content: center;
+    border-bottom: 1px solid #e1e5e9;
+    font-size: 18px;
+  }
+
+  .logo img {
+    width: 35px;
+  }
+
+  .health, .hub {
+    font-size: 16px;
+  }
+
+  .right-side {
+    order: 2;
+  }
+
+  /* Esconder contatos e redes sociais do header em mobile */
+  .sup {
+    display: none;
+  }
+
+  /* Menu de navegação mobile */
+  .inf nav {
+    padding: 10px 15px;
+    background-color: #004d80;
+  }
+
+  .nav-links {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .nav-links li {
+    margin: 0;
+  }
+
+  .nav-links a {
+    padding: 6px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    display: block;
+    text-align: center;
+    min-width: 60px;
+  }
+
+  /* Hero section mobile */
+  .hero {
+    padding: 30px 0;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .hero-arrow {
+    display: none;
+  }
+
+  .hero-text {
+    order: 2;
+  }
+
+  .hero-image {
+    order: 1;
+    display: none;
+  }
+
+  .hero-text h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    line-height: 1.3;
+  }
+
+  .hero-text p {
+    font-size: 14px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  .hero .btn {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  /* Features section mobile */
+  .features {
+    padding: 30px 0;
+  }
+
+  .features h2 {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+
+  .feature-list {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .feature-item {
+    padding: 15px 10px;
+    text-align: center;
+  }
+
+  .feature-item h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .feature-item p {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .feature-list i img {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Partnership section mobile */
+  .partnership-section {
+    padding: 40px 0;
+  }
+
+  .partnership-content {
+    padding: 0 10px;
+  }
+
+  .partnership-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    line-height: 1.3;
+  }
+
+  .partnership-content p {
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+    line-height: 1.5;
+  }
+
+  .btn-partnership {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+
+  /* Footer mobile */
+  footer {
+    padding: 30px 0 0 0;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    text-align: center;
+  }
+
+  .footer-brand {
+    align-items: center;
+  }
+
+  .footer-logo img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .brand-text {
+    font-size: 18px;
+  }
+
+  .footer-links {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .footer-column h4 {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .footer-column ul li a {
+    font-size: 13px;
+  }
+
+  .footer-social-icons img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .footer-bottom {
+    padding: 15px 0;
+  }
+
+  .footer-bottom-content {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .footer-bottom p,
+  .footer-bottom-links a {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  /* Layout geral mobile médio */
   .container {
     padding: 0 15px;
   }
@@ -976,11 +1379,6 @@ footer {
     margin-bottom: 20px;
   }
 
-  .hero-image img {
-    max-width: 250px;
-    width: 100%;
-  }
-
   /* Features section mobile */
   .features {
     padding: 40px 0;
@@ -1011,23 +1409,43 @@ footer {
     line-height: 1.5;
   }
 
-  /* Footer mobile - mostrar contatos e redes sociais */
+  /* Partnership section mobile */
+  .partnership-section {
+    padding: 60px 0;
+  }
+
+  .partnership-content h2 {
+    font-size: 2rem;
+  }
+
+  .partnership-content p {
+    font-size: 1rem;
+  }
+
+  /* Footer mobile */
   footer {
-    padding: 30px 0 20px 0;
+    padding: 40px 0 0 0;
   }
 
-  .footer-mobile-content {
-    display: block;
-    margin-bottom: 20px;
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
   }
 
-  .footer-contact-item {
-    justify-content: center;
-    font-size: 14px;
+  .footer-brand {
+    align-items: center;
   }
 
-  .footer-social-icons {
-    margin-bottom: 20px;
+  .footer-links {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .footer-bottom-content {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
   }
 
   /* Páginas internas mobile */
@@ -1144,6 +1562,64 @@ footer {
 
   .alimentacao-grid, .exercicios-grid, .agua-grid, .monitoramento-grid, .imc-grid, .perfil-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .footer-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .partnership-content h2 {
+    font-size: 2.2rem;
+  }
+
+  .partnership-content p {
+    font-size: 1.1rem;
+  }
+}
+
+/* Responsividade para telas grandes */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .container {
+    max-width: 1200px;
+  }
+
+  .hero-text h2 {
+    font-size: 38px;
+  }
+
+  .partnership-content h2 {
+    font-size: 2.8rem;
+  }
+
+  .footer-content {
+    gap: 80px;
+  }
+}
+
+/* Responsividade para telas extra grandes */
+@media (min-width: 1441px) {
+  .container {
+    max-width: 1400px;
+  }
+
+  .hero-text h2 {
+    font-size: 42px;
+  }
+
+  .partnership-content h2 {
+    font-size: 3rem;
+  }
+
+  .footer-content {
+    gap: 100px;
+  }
+
+  .footer-links {
+    gap: 60px;
   }
 }
 

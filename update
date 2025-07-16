@@ -1,0 +1,5 @@
+git add .
+git commit -m "Update (day.mounth.year-hour.min)"
+git branch -M main
+git push -u origin main
+git push
