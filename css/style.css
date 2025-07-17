@@ -455,9 +455,37 @@ footer {
   background: #fff;
 }
 
+
 #imcSerasaGauge {
-  margin-top: 20px;
+  display: block;
+  margin: 0 auto;
 }
+
+.imc-valor-display {
+  text-align: center;
+  margin-top: -30px;
+}
+
+.imc-valor-numero {
+  font-size: 32px;
+  font-weight: bold;
+  color: #d32f2f;
+}
+
+.imc-resultado-texto {
+  text-align: center;
+  font-size: 18px;
+  color: #d32f2f;
+  margin-top: 5px;
+}
+
+
+#imcDiagnosticoFinal {
+  font-size: 20px;
+  font-weight: bold;
+  color: #e53935;
+}
+
 
 /* Estilos para páginas internas */
 .page-header {
@@ -512,6 +540,34 @@ footer {
   margin-bottom: 20px;
   font-size: 1.4rem;
 }
+
+.imc-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.imc-valor-topo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff3c3c;
+  margin-bottom: 10px;
+}
+
+canvas#imcSerasaGauge {
+  margin-bottom: 10px;
+}
+
+.imc-diagnostico {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff3c3c;
+  white-space: pre-line; /* Permite quebrar linha com \n se quiser */
+}
+
 
 /* Formulários */
 .form-group {
@@ -2058,5 +2114,38 @@ footer {
   .dicas-sono {
     grid-template-columns: 1fr;
   }
+}
+
+
+/* Estilos para o display do valor do IMC */
+.imc-valor-display {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.imc-valor-numero {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+}
+
+.stats-container {
+  position: relative;
+}
+
+#imcSerasaGauge {
+  display: block;
+  margin: 20px auto;
+}
+
+.imc-resultado-texto {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.imc-resultado-texto p {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
 }
 

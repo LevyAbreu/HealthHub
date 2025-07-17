@@ -24,13 +24,13 @@
                             <i class="fas fa-phone-alt">
                                 <img src="https://img.icons8.com/?size=100&id=9730&format=png&color=00BCD4" alt="cell-phone">
                             </i>
-                            +55 99 99999-9999
+                            +55 92 994861601
                         </span>
                         <span>
                             <i class="fas fa-envelope">
                                 <img src="https://img.icons8.com/?size=100&id=12623&format=png&color=00BCD4" alt="email">
                             </i>
-                            contato@healthhub.com
+                            vlbdsa.vag@gmail.com
                         </span>
                     </div>
                     <div class="social-icons">
@@ -45,7 +45,6 @@
                         <ul class="nav-links">
                             <li><a href="index.html">Início</a></li>
                             <li><a href="exercicios.html">Exercícios</a></li>
-                            <li><a href="imc.html">IMC e Saúde</a></li>
                             <li><a href="alimentacao.html">Alimentação</a></li>
                             <li><a href="saude-mental.html">Saúde Mental</a></li>
                             <li><a href="sono.html">Sono</a></li>
@@ -87,6 +86,10 @@
                             <label for="altura">Altura (m):</label>
                             <input type="number" id="altura" placeholder="1.75" step="0.01" min="0.5" max="2.5" required>
                         </div>
+                        <div class="form-group">
+                            <label for="nome">Add alergia:</label>
+                            <input type="text" id="alergia" placeholder="Castanha">
+                        </div>
                         <button type="submit" class="btn">Salvar Informações</button>
                     </form>
                 </div>
@@ -103,28 +106,15 @@
                             <span class="stat-numero" id="totalCalorias">0</span>
                             <span class="stat-label">Calorias esta semana</span>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-numero" id="totalAgua">0L</span>
-                            <span class="stat-label">Água esta semana</span>
+                        <div class="container-imc" style="text-align: center;">
+                            <canvas id="imcSerasaGauge" width="350" height="250"></canvas>
+                            <div class="imc-valor-display">
+                                <span id="imcValor" class="imc-valor-numero">--</span>
+                            </div>
+                          </div>
+                        <div class="imc-resultado-texto">
+                            <p id="imcDiagnostico">--</p>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-numero" id="diasAtivos">0</span>
-                            <span class="stat-label">Dias ativos</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sincronização -->
-                <div class="card">
-                    <h3>Sincronização de Dados</h3>
-                    <div class="sync-info">
-                        <p>Status: <span id="statusSync">Verificando...</span></p>
-                        <p>Última sincronização: <span id="ultimaSync">--</span></p>
-                        <p>Dados pendentes: <span id="dadosPendentes">0</span></p>
-                    </div>
-                    <div class="sync-actions">
-                        <button onclick="perfilManager.sincronizarAgora()" class="btn">Sincronizar Agora</button>
-                        <button onclick="perfilManager.exportarDados()" class="btn btn-secondary">Exportar Dados</button>
                     </div>
                 </div>
 
@@ -152,6 +142,27 @@
                         <input type="number" id="metaAgua" value="2000" min="1000" max="5000">
                     </div>
                     <button onclick="perfilManager.salvarConfiguracoes()" class="btn">Salvar Configurações</button>
+
+                    <h3>Sincronização de Dados</h3>
+                    <div class="sync-info">
+                        <p>Status: <span id="statusSync">Verificando...</span></p>
+                        <p>Última sincronização: <span id="ultimaSync">--</span></p>
+                        <p>Dados pendentes: <span id="dadosPendentes">0</span></p>
+                    </div>
+                    <div class="sync-actions">
+                        <button onclick="perfilManager.sincronizarAgora()" class="btn">Sincronizar Agora</button>
+                        <button onclick="perfilManager.exportarDados()" class="btn btn-secondary">Exportar Dados</button>
+                    </div>
+                </div>
+
+                <!-- Intolerancias -->
+                <div class="card">
+                    <h3>Lista de Alergias</h3>
+                    <div class="card full-width">
+                        <div class="refeicoes-lista" id="refeicoesLista">
+                            <p class="empty-state">Nenhuma refeição registrada hoje.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -172,14 +183,6 @@
   
             <div class="footer-links">
               <div class="footer-column">
-              <!-- Parcerias
-                <h4>Parcerias</h4>
-                <ul>
-                  <li><a href="#wellness">Wellness</a></li>
-                  <li><a href="#social-media">Social Media</a></li>
-                  <li><a href="#branding">Branding</a></li>
-                </ul>
-               -->
               </div>
               
               <div class="footer-column">

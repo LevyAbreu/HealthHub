@@ -8,6 +8,25 @@ class PerfilManager {
         this.init();
     }
 
+    calcularEExibirIMC(peso, altura) {
+        if (isNaN(peso) || isNaN(altura) || altura === 0) {
+            document.getElementById("imcValor").textContent = "--";
+            document.getElementById("imcDiagnostico").textContent = "--";
+            drawGauge(0);
+            return;
+        }
+
+        const imcCalculado = peso / (altura * altura);
+        const faixa = getFaixaDoIMC(imcCalculado);
+
+        // Atualiza elementos visuais
+        document.getElementById("imcValor").textContent = imcCalculado.toFixed(2);
+        document.getElementById("imcDiagnostico").textContent = faixa ? faixa.label : "";
+        document.getElementById("imcDiagnostico").style.color = faixa ? faixa.cor : "#333";
+
+        drawGauge(imcCalculado);
+    }
+
     async init() {
         this.setupEventListeners();
         this.setupStateListeners();
@@ -15,6 +34,7 @@ class PerfilManager {
         this.carregarConfiguracoes();
         await this.atualizarEstatisticas();
         this.verificarStatusSync();
+        drawGauge(0); // Inicializa o gauge com 0 ou valor padrão
         
         // Iniciar monitoramento automático
         await this.firebaseService.iniciarMonitoramento();
@@ -58,10 +78,14 @@ class PerfilManager {
             document.getElementById('peso').value = usuario.peso || '';
         }
         if (usuario.altura !== undefined) {
-            document.getElementById('altura').value = usuario.altura || '';
+            document.getElementById("altura").value = usuario.altura || "";
+        }
+        // Calcular e exibir IMC quando peso e altura estiverem disponíveis
+        if (usuario.peso && usuario.altura) {
+            this.calcularEExibirIMC(usuario.peso, usuario.altura);
         }
         if (usuario.imc !== undefined) {
-            document.getElementById('imcAtual').textContent = usuario.imc ? usuario.imc.toFixed(1) : '--';
+            document.getElementById("imcAtual").textContent = usuario.imc ? usuario.imc.toFixed(1) : "--";
         }
     }
 
@@ -103,11 +127,14 @@ class PerfilManager {
         e.preventDefault();
         
         const dadosUsuario = {
-            nome: document.getElementById('nome').value,
-            idade: parseInt(document.getElementById('idade').value),
-            peso: parseFloat(document.getElementById('peso').value),
-            altura: parseFloat(document.getElementById('altura').value)
+            nome: document.getElementById("nome").value,
+            idade: parseInt(document.getElementById("idade").value),
+            peso: parseFloat(document.getElementById("peso").value),
+            altura: parseFloat(document.getElementById("altura").value)
         };
+
+        // Calcular e exibir IMC imediatamente após salvar
+        this.calcularEExibirIMC(dadosUsuario.peso, dadosUsuario.altura);
 
         try {
             // Atualizar estado local
@@ -273,3 +300,98 @@ document.addEventListener('DOMContentLoaded', () => {
     window.perfilManager = new PerfilManager();
 });
 
+
+
+
+// Funções de cálculo e desenho do IMC (copiadas de main.js)
+const faixas = [
+    { de: 0, ate: 18.4, cor: "#00BCD4", nome: "Abaixo do peso" },
+    { de: 18.5, ate: 24.9, cor: "#4CAF50", nome: "Normal" },
+    { de: 25, ate: 29.9, cor: "#FFC107", nome: "Sobrepeso" },
+    { de: 30, ate: 34.9, cor: "#FF5722", nome: "Obesidade Grau I" },
+    { de: 35, ate: 39.9, cor: "#F44336", nome: "Obesidade Grau II" },
+    { de: 40, ate: 60, cor: "#B71C1C", nome: "Obesidade Grau III" },
+];  
+
+function mapIMCToAngle(valor) {
+    const maxIMC = 40;
+    const start = Math.PI;
+    const end = 0;
+    return start + ((end - start) * (valor / maxIMC));
+}
+
+function getFaixaDoIMC(imc) {
+    return faixas.find(faixa => imc >= faixa.de && imc <= faixa.ate);
+}
+
+function drawGauge(imcValue) {
+    const canvas = document.getElementById("imcSerasaGauge");
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height * 0.9;
+    const radius = 100;
+    const thickness = 20;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Desenha os arcos coloridos (faixas de IMC)
+    faixas.forEach(faixa => {
+        const startAngle = mapIMCToAngle(faixa.de);
+        const endAngle = mapIMCToAngle(faixa.ate);
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, startAngle, endAngle, false);
+        ctx.strokeStyle = faixa.cor;
+        ctx.lineWidth = thickness;
+        ctx.stroke();
+    });
+
+    // Determina a faixa atual e sua cor
+    const faixaAtual = getFaixaDoIMC(imcValue);
+    const diagnosticoTexto = faixaAtual ? faixaAtual.nome : "--";
+    const pointerColor = faixaAtual ? faixaAtual.cor : "#333";
+
+    // Atualiza o diagnóstico textual
+    const diagnosticoFinalEl = document.getElementById("imcDiagnostico");
+    if (diagnosticoFinalEl) {
+        diagnosticoFinalEl.textContent = diagnosticoTexto;
+        diagnosticoFinalEl.style.color = pointerColor;
+    }
+
+    // Atualiza o valor do IMC
+    const imcValorEl = document.getElementById("imcValor");
+    if (imcValorEl) {
+        imcValorEl.textContent = imcValue > 0 ? imcValue.toFixed(1) : "--";
+        imcValorEl.style.color = pointerColor;
+    }
+
+    // Calcula o ângulo do ponteiro
+    const angle = mapIMCToAngle(imcValue);
+
+    // Desenha ponteiro
+    const pointerLength = radius - 15;
+    const px = centerX + pointerLength * Math.cos(angle);
+    const py = centerY + pointerLength * Math.sin(angle);
+
+    // Desenha o ponteiro
+    ctx.beginPath();
+    ctx.moveTo(centerX, centerY);
+    ctx.lineTo(px, py);
+    ctx.strokeStyle = pointerColor;
+    ctx.lineWidth = 4;
+    ctx.stroke();
+
+    // Desenha o círculo central
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, 8, 0, 2 * Math.PI);
+    ctx.fillStyle = pointerColor;
+    ctx.fill();
+
+    // Desenha o valor do IMC no centro do gauge
+    ctx.fillStyle = "#333";
+    ctx.font = "bold 24px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText(imcValue > 0 ? imcValue.toFixed(1) : "--", centerX, centerY - 40);
+}
