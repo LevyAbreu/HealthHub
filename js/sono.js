@@ -175,50 +175,60 @@ function atualizarEstatisticas() {
     }
 }
 
-// Carregar histórico
 function carregarHistorico() {
-    // Placeholder para gráfico
-    const canvas = document.getElementById('sonoChart');
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-        ctx.fillStyle = '#f0f0f0';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#0072ff';
-        ctx.font = '16px Arial';
-        ctx.textAlign = 'center';
-        ctx.fillText('Gráfico do sono será exibido aqui', canvas.width/2, canvas.height/2);
-        ctx.font = '12px Arial';
-        ctx.fillText('(Funcionalidade em desenvolvimento)', canvas.width/2, canvas.height/2 + 20);
+    const dadosSono = JSON.parse(localStorage.getItem('dadosSono')) || [];
+  
+    // Dados pro gráfico
+    const dias = dadosSono.map((dado, index) => `Dia ${index + 1}`);
+    const horasDormidas = dadosSono.map(dado => calcularHorasSono(dado.horaDormir, dado.horaAcordar));
+  
+    // Configuração do gráfico
+    const config = {
+      type: 'bar',
+      data: {
+        labels: dias,
+        datasets: [{
+          label: 'Horas Dormidas',
+          data: horasDormidas,
+          backgroundColor: 'rgba(54, 162, 235, 0.6)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            suggestedMax: 12
+          }
+        }
+      }
+    };
+  
+    // Verifica se os dois canvases existem
+    const ctx1 = document.getElementById('sonoChart1');
+    const ctx2 = document.getElementById('sonoChart2');
+  
+    if (ctx1) {
+      new Chart(ctx1.getContext('2d'), config);
     }
-    
-    // Lista dos últimos 7 dias
-    const sonoLista = document.getElementById('sonoLista');
-    const ultimos7Dias = sonoData.slice(-7);
-    
-    if (ultimos7Dias.length === 0) {
-        sonoLista.innerHTML = '<p class="empty-state">Nenhum registro de sono encontrado</p>';
-        return;
+  
+    if (ctx2) {
+      new Chart(ctx2.getContext('2d'), config);
     }
-    
-    sonoLista.innerHTML = ultimos7Dias.map(registro => {
-        const data = new Date(registro.data).toLocaleDateString('pt-BR');
-        const qualidadeClass = getQualidadeClass(registro.qualidade);
-        
-        return `
-            <div class="sono-item">
-                <div class="sono-header">
-                    <span class="sono-data">${data}</span>
-                    <span class="sono-duracao">${registro.duracao.toFixed(1)}h</span>
-                </div>
-                <div class="sono-detalhes">
-                    <span class="sono-horario">${registro.horaDormir} - ${registro.horaAcordar}</span>
-                    <span class="sono-qualidade ${qualidadeClass}">${registro.qualidade}</span>
-                </div>
-                ${registro.observacoes ? `<div class="sono-obs">${registro.observacoes}</div>` : ''}
-            </div>
-        `;
-    }).join('');
-}
+  
+    // Atualiza lista
+    const lista = document.getElementById('sonoLista');
+    lista.innerHTML = '';
+    dadosSono.slice(-7).forEach(dado => {
+      const item = document.createElement('div');
+      item.textContent = `Dormiu às ${dado.horaDormir}, acordou às ${dado.horaAcordar} (${dado.qualidade}/5)`;
+      lista.appendChild(item);
+    });
+  }
+  
 
 // Obter classe CSS para qualidade
 function getQualidadeClass(qualidade) {

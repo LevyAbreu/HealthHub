@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil do Usuário - HealthHub</title>
+    <!--Styles-->
     <link rel="shortcut icon" href="assets/health_logo.png">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/base.css"/>
+    <link rel="stylesheet" href="css/header.css"/>
+    <link rel="stylesheet" href="css/footer.css"/>
+    <link rel="stylesheet" href="css/pages.css"/>
+    <link rel="stylesheet" href="css/style_perfil.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
@@ -87,8 +93,11 @@
                             <input type="number" id="altura" placeholder="1.75" step="0.01" min="0.5" max="2.5" required>
                         </div>
                         <div class="form-group">
-                            <label for="nome">Add alergia:</label>
-                            <input type="text" id="alergia" placeholder="Castanha">
+                            <label for="alergia">Add alergia:</label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="text" id="alergia" placeholder="Castanha">
+                                <button type="button" onclick="adicionarAlergia()" class="btn">Adicionar</button>
+                            </div>
                         </div>
                         <button type="submit" class="btn">Salvar Informações</button>
                     </form>
@@ -98,13 +107,15 @@
                 <div class="card">
                     <h3>Suas Estatísticas</h3>
                     <div class="stats-container">
-                        <div class="stat-item">
-                            <span class="stat-numero" id="imcAtual">--</span>
-                            <span class="stat-label">IMC Atual</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-numero" id="totalCalorias">0</span>
-                            <span class="stat-label">Calorias esta semana</span>
+                        <div class="aligned">
+                            <div class="stat-item">
+                                <span class="stat-numero" id="imcAtual">--</span><br>
+                                <span class="stat-label">IMC Atual</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-numero" id="totalCalorias">0</span><br>
+                                <span class="stat-label">Calorias esta semana</span>
+                            </div>
                         </div>
                         <div class="container-imc" style="text-align: center;">
                             <canvas id="imcSerasaGauge" width="350" height="250"></canvas>
@@ -155,12 +166,12 @@
                     </div>
                 </div>
 
-                <!-- Intolerancias -->
-                <div class="card">
+                <!-- Lista de Alergias -->
+                <div class="card full-width">
                     <h3>Lista de Alergias</h3>
-                    <div class="card full-width">
-                        <div class="refeicoes-lista" id="refeicoesLista">
-                            <p class="empty-state">Nenhuma refeição registrada hoje.</p>
+                    <div>
+                        <div class="alergias-lista" id="alergiasLista">
+                            <p class="empty-state">Nenhuma alergia registrada.</p>
                         </div>
                     </div>
                 </div>
@@ -228,6 +239,7 @@
 
     <script type="module" src="js/state-manager.js"></script>
     <script type="module" src="js/perfil.js"></script>
+    <script type="module" src="js/alergias.js"></script>
 </body>
 </html>
 

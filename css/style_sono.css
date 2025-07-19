@@ -1,0 +1,234 @@
+.sono-content {
+  padding: 60px 0;
+  background: #f8f9fa;
+}
+
+.sono-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.sono-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.sono-visual {
+  padding-top: 20px;
+  border-top: 1px solid #e1e5e9;
+}
+
+.sono-visual h4 {
+  color: #0072ff;
+  margin-bottom: 15px;
+}
+
+.sono-info p {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.sono-info strong {
+  color: #333;
+  font-weight: 600;
+}
+
+.meta-info {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e1e5e9;
+}
+
+.meta-info h4 {
+  color: #0072ff;
+  margin-bottom: 15px;
+}
+
+.meta-info label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.meta-info input[type="checkbox"] {
+  width: auto;
+  margin-right: 8px;
+}
+
+.sono-historico {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+}
+
+.sono-grafico {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid #e1e5e9;
+}
+
+#sonoChart1 {
+  display: block;
+  margin: 0 auto;
+}
+
+#sonoChart2 {
+  display: none;
+}
+
+.sono-lista {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.sono-item {
+  background: white;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-left: 4px solid #0072ff;
+  transition: transform 0.2s ease;
+}
+
+.sono-item:hover {
+  transform: translateX(5px);
+}
+
+.sono-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.sono-data {
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.sono-duracao {
+  font-weight: 700;
+  color: #0072ff;
+  font-size: 16px;
+}
+
+.sono-detalhes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.sono-horario {
+  font-size: 13px;
+  color: #666;
+}
+
+.sono-qualidade {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+  text-transform: capitalize;
+}
+
+.qualidade-excelente {
+  background: #e8f5e8;
+  color: #2e7d32;
+}
+
+.qualidade-boa {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.qualidade-regular {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.qualidade-ruim {
+  background: #ffebee;
+  color: #d32f2f;
+}
+
+.qualidade-pessima {
+  background: #fce4ec;
+  color: #c2185b;
+}
+
+.sono-obs {
+  font-size: 12px;
+  color: #666;
+  font-style: italic;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.dicas-sono {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.dicas-sono .dica-item {
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #6a1b9a;
+}
+
+.dicas-sono .dica-item h4 {
+  color: #6a1b9a;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.dicas-sono .dica-item p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Responsividade para Sono */
+@media (max-width: 768px) {
+  .sono-stats {
+    grid-template-columns: 1fr;
+  }
+
+  #sonoChart1 {
+    display: none;
+  }
+
+  #sonoChart2 {
+    display: block;
+  }
+
+  .sono-historico {
+    grid-template-columns: 1fr;
+  }
+  
+  .sono-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .sono-detalhes {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .dicas-sono {
+    grid-template-columns: 1fr;
+  }
+}

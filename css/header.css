@@ -1,0 +1,229 @@
+/* ===== HEADER - ESTILOS DO CABEÇALHO ===== */
+
+.top-bar {
+  font-size: 14px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.top-bar-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  padding: 17px 40px 0px 72px;
+  font-size: 24px;
+  cursor: pointer;
+  font-family: 'Varela Round', sans-serif;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 50px;
+}
+
+.health {
+  color: #00bcd4;
+  font-size: 20px;
+}
+
+.hub {
+  color: #004d80;
+  font-size: 20px;
+}
+
+.right-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.sup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.contact-info span {
+  display: flex;
+  align-items: center;
+}
+
+.contact-info i {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.social-icons {
+  background-color: #0072ff;
+  color: white;
+  padding: 10px;
+}
+
+.social-icons i {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+i img {
+  width: 15px;
+  height: 15px;
+  margin: 0px 5px;
+}
+
+.feature-list i img {
+  width: 50px;
+  height: 50px;
+}
+
+.inf nav {
+  background-color: #004d80;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 10px 20px;
+  margin: 0;
+  width: 100%;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+}
+
+.nav-links a.active {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 8px 12px;
+}
+
+/* RESPONSIVIDADE MOBILE */
+@media (max-width: 480px) {
+
+  /* Header mobile - reorganização completa */
+  .top-bar-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .logo {
+    padding: 10px 15px;
+    justify-content: center;
+    border-bottom: 1px solid #e1e5e9;
+    font-size: 18px;
+  }
+
+  .logo img {
+    width: 35px;
+  }
+
+  .health, .hub {
+    font-size: 16px;
+  }
+
+  .right-side {
+    order: 2;
+  }
+
+  .sup {
+    display: none;
+  }
+
+  /* Menu de navegação mobile */
+  .inf nav {
+    padding: 10px 15px;
+    background-color: #004d80;
+  }
+
+  .nav-links {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .nav-links li {
+    margin: 0;
+  }
+
+  .nav-links a {
+    padding: 6px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    display: block;
+    text-align: center;
+    min-width: 60px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  /* Header mobile - reorganização completa */
+  .top-bar-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .logo {
+    padding: 15px 20px;
+    justify-content: center;
+    border-bottom: 1px solid #e1e5e9;
+  }
+
+  .right-side {
+    order: 2;
+  }
+
+  /* Esconder contatos e redes sociais do header em mobile */
+  .sup {
+    display: none;
+  }
+
+  /* Menu de navegação mobile */
+  .inf nav {
+    padding: 15px 20px;
+    background-color: #004d80;
+  }
+
+  .nav-links {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .nav-links li {
+    margin: 0;
+  }
+
+  .nav-links a {
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    display: block;
+    text-align: center;
+    min-width: 80px;
+  }
+}

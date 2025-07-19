@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background: #e1e5e9;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #4caf50;
+  transition: width 0.5s ease;
+  border-radius: 6px;
+}
+
+.progress-container {
+  margin-top: 20px;
+}
+
+.progress-text {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  display: block;
+}
+
+.exercicio-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.exercicio-tipo {
+  font-weight: 600;
+  color: #0072ff;
+  font-size: 16px;
+}
+
+.exercicio-data {
+  font-size: 12px;
+  color: #999;
+}
+
+.exercicio-detalhes {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 8px;
+}
+
+.detalhe {
+  font-size: 14px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.intensidade-baixa { color: #4caf50; }
+.intensidade-moderada { color: #ff9800; }
+.intensidade-alta { color: #f44336; }
+
+.exercicio-obs {
+  font-style: italic;
+  color: #666;
+  margin: 8px 0 0 0;
+  font-size: 14px;
+}
+
+.filtros-exercicio {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.filtro-btn {
+  padding: 8px 16px;
+  border: 2px solid #e1e5e9;
+  background: white;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.filtro-btn:hover {
+  border-color: #0072ff;
+  color: #0072ff;
+}
+
+.filtro-btn.active {
+  background: #0072ff;
+  color: white;
+  border-color: #0072ff;
+}
+
+.stats-container, .metas-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.stat-numero {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0072ff;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}

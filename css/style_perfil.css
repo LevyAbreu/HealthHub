@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+.imc-serasa {
+  text-align: center;
+  padding: 60px 0;
+  background: #fff;
+}
+
+#imcSerasaGauge {
+  display: block;
+  margin: 0 auto;
+}
+
+.imc-valor-display {
+  text-align: center;
+  margin-top: -30px;
+}
+
+.imc-valor-numero {
+  font-size: 32px;
+  font-weight: bold;
+  color: #d32f2f;
+}
+
+.imc-resultado-texto {
+  text-align: center;
+  font-size: 18px;
+  color: #d32f2f;
+  margin-top: 5px;
+}
+
+#imcDiagnosticoFinal {
+  font-size: 20px;
+  font-weight: bold;
+  color: #e53935;
+}
+
+.imc-content {
+  padding: 60px 0;
+  background: #f8f9fa;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.imc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.imc-resultado-texto {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.imc-resultado-texto p {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.imc-resultado-texto span {
+  font-weight: 700;
+  color: #0072ff;
+}
+
+.perfil-content {
+  padding: 60px 0;
+  background: #f8f9fa;
+}
+
+.perfil-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.sync-info p {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.sync-info span {
+  font-weight: 600;
+}
+
+.sync-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.config-item {
+  margin-bottom: 15px;
+}
+
+.config-item label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.config-item input[type="checkbox"] {
+  width: auto;
+}
+
+.config-item input[type="number"] {
+  margin-top: 5px;
+}
+
+.imc-valor-display {
+  text-align: center;
+  margin: 10px 0;
+}
+
+#imcSerasaGauge {
+  display: block;
+  margin: 20px auto;
+}
+
+.imc-resultado-texto {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #b71c1c;
+  font-size: 16px;
+}
+
+.imc-resultado-texto p {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}  
+
+.imc-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.imc-valor-topo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff3c3c;
+  margin-bottom: 10px;
+}
+
+canvas#imcSerasaGauge {
+  margin-bottom: 10px;
+}
+
+.imc-diagnostico {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff3c3c;
+  white-space: pre-line;
+}
+
+.imc-valor-numero {
+  display: block;
+  font-size: 28px;
+  font-weight: bold;
+  color: #c62828;
+  margin-top: 8px;
+}
+
+.stats-container {
+  position: relative;
+}
+
+.aligned {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  padding-top: 16px;
+}
+
+.stat-item {
+  background-color: #f9f9fb;
+  padding: 24px 16px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.stat-numero {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0072ff;
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #444;
+  text-transform: uppercase;
+  line-height: 1.2;
+}

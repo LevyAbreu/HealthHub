@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+.resumo-calorias {
+  margin-bottom: 20px;
+}
+
+.caloria-item, .meta-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.caloria-item:last-child, .meta-item:last-child {
+  border-bottom: none;
+}
+
+.label, .meta-label {
+  font-weight: 600;
+  color: #666;
+}
+
+.valor, .meta-valor {
+  font-weight: 700;
+  color: #0072ff;
+}
+
+
+/* Lista de refeições */
+.refeicoes-lista, .exercicios-lista, .agua-lista {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.refeicao-grupo {
+  margin-bottom: 25px;
+}
+
+.refeicao-grupo h4 {
+  color: #0072ff;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e1e5e9;
+}
+
+.refeicao-item, .exercicio-item, .agua-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.refeicao-item:hover, .exercicio-item:hover, .agua-item:hover {
+  background: #e9ecef;
+}
+
+.refeicao-info, .exercicio-info, .agua-info {
+  flex: 1;
+}
+
+.alimento {
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.detalhes, .hora {
+  font-size: 14px;
+  color: #666;
+  margin-right: 15px;
+}
+
+.btn-remove {
+  background: #f44336;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.btn-remove:hover {
+  background: #d32f2f;
+  transform: scale(1.1);
+}

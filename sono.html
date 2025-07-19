@@ -5,8 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Monitoramento de Sono - HealthHub</title>
     <meta name="description" content="Monitore e melhore a qualidade do seu sono com o HealthHub. Registre horários, analise padrões e receba dicas personalizadas.">
+    <!--Styles-->
     <link rel="shortcut icon" href="assets/health_logo.png">
-    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/base.css"/>
+    <link rel="stylesheet" href="css/header.css"/>
+    <link rel="stylesheet" href="css/footer.css"/>
+    <link rel="stylesheet" href="css/pages.css"/>
+    <link rel="stylesheet" href="css/style_sono.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
@@ -173,7 +179,8 @@
               <h3>Histórico dos Últimos 7 Dias</h3>
               <div class="sono-historico">
                 <div class="sono-grafico">
-                  <canvas id="sonoChart" width="400" height="200"></canvas>
+                  <canvas id="sonoChart1" width="1050" height="200"></canvas>
+                  <canvas id="sonoChart2" width="290" height="200"></canvas>
                 </div>
                 <div class="sono-lista" id="sonoLista">
                   <!-- Lista será preenchida dinamicamente -->

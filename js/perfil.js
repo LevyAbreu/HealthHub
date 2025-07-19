@@ -34,7 +34,7 @@ class PerfilManager {
         this.carregarConfiguracoes();
         await this.atualizarEstatisticas();
         this.verificarStatusSync();
-        drawGauge(0); // Inicializa o gauge com 0 ou valor padrão
+        drawGauge(0);
         
         // Iniciar monitoramento automático
         await this.firebaseService.iniciarMonitoramento();
@@ -264,6 +264,7 @@ class PerfilManager {
                 bebidasHoje: bebidas,
                 estatisticasSemanais: estatisticas,
                 estado: this.stateManager.getState(),
+                alergias: window.alergias || [], // Incluir alergias na exportação
                 dataExportacao: new Date().toISOString()
             };
             
@@ -287,6 +288,17 @@ class PerfilManager {
         const feedback = document.createElement('div');
         feedback.className = `feedback-message ${tipo === 'error' ? 'error' : ''}`;
         feedback.textContent = mensagem;
+        feedback.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            z-index: 1000;
+            background-color: ${tipo === 'error' ? '#f44336' : '#4caf50'};
+        `;
         document.body.appendChild(feedback);
 
         setTimeout(() => {
@@ -300,10 +312,124 @@ document.addEventListener('DOMContentLoaded', () => {
     window.perfilManager = new PerfilManager();
 });
 
+// Banco de dados simples de alergias e alimentos a evitar
+const alergiasBanco = {
+    'leite': ['queijo', 'manteiga', 'iogurte', 'sorvete', 'chocolate ao leite', 'creme de leite'],
+    'ovo': ['maionese', 'bolo', 'biscoito', 'massa de pastel', 'merengue', 'quiche'],
+    'glúten': ['pão', 'macarrão', 'pizza', 'biscoito', 'cerveja', 'aveia'],
+    'amendoim': ['paçoca', 'pé de moleque', 'doce de amendoim', 'óleo de amendoim', 'molho satay'],
+    'castanha': ['castanha do pará', 'castanha de caju', 'nozes', 'amêndoas', 'pistache'],
+    'camarão': ['frutos do mar', 'paella', 'risotto de camarão', 'tempurá', 'bobó de camarão'],
+    'soja': ['molho shoyu', 'tofu', 'leite de soja', 'tempeh', 'miso', 'edamame'],
+    'lactose': ['leite', 'queijo', 'iogurte', 'sorvete', 'manteiga', 'creme de leite'],
+    'peixe': ['salmão', 'atum', 'sardinha', 'bacalhau', 'anchova', 'molho de peixe'],
+    'trigo': ['pão', 'macarrão', 'pizza', 'biscoito', 'farinha de trigo', 'cerveja']
+};
 
+// Array para armazenar as alergias do usuário
+window.alergias = JSON.parse(localStorage.getItem('alergias')) || [];
 
+// Função para adicionar alergia
+window.adicionarAlergia = function() {
+    const input = document.getElementById('alergia');
+    const nomeAlergia = input.value.trim().toLowerCase();
+    
+    if (nomeAlergia === '') {
+        alert('Por favor, digite o nome de uma alergia.');
+        return;
+    }
+    
+    // Verificar se a alergia já foi adicionada
+    if (window.alergias.some(a => a.nome === nomeAlergia)) {
+        alert('Esta alergia já foi adicionada.');
+        return;
+    }
+    
+    // Buscar alimentos a evitar no banco de dados
+    let alimentosEvitar = alergiasBanco[nomeAlergia] || ['Consulte um médico para mais informações'];
+    
+    // Adicionar a alergia ao array
+    window.alergias.push({
+        nome: nomeAlergia,
+        alimentos: alimentosEvitar
+    });
+    
+    // Salvar no localStorage
+    localStorage.setItem('alergias', JSON.stringify(window.alergias));
+    
+    // Limpar o input
+    input.value = '';
+    
+    // Atualizar a exibição
+    atualizarListaAlergias();
+    
+    // Mostrar feedback
+    if (window.perfilManager) {
+        window.perfilManager.mostrarFeedback(`Alergia "${nomeAlergia}" adicionada com sucesso!`);
+    }
+}
 
-// Funções de cálculo e desenho do IMC (copiadas de main.js)
+// Função para atualizar a lista de alergias na tela
+function atualizarListaAlergias() {
+    const container = document.getElementById('alergiasLista');
+    
+    if (window.alergias.length === 0) {
+        container.innerHTML = '<p class="empty-state">Nenhuma alergia registrada.</p>';
+        return;
+    }
+    
+    let html = '';
+    window.alergias.forEach((alergia, index) => {
+        html += `
+            <div class="alergia-item" style="margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;">
+                <p class="azul" style="font-weight: bold; color: #00BCD4; margin: 0 0 10px 0; text-transform: capitalize; font-size: 18px;">${alergia.nome}</p>
+                <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 10px;">
+                    <p class="Alimentos_evitar" style="margin: 0; font-weight: bold; color: #333;">Alimentos a evitar:</p>
+                    ${alergia.alimentos.map(alimento => 
+                        `<p class="azul" style="margin: 0; color: #00BCD4; text-transform: capitalize;">${alimento}</p>`
+                    ).join(' - ')}
+                </div>
+                <button onclick="removerAlergia(${index})" style="margin-top: 10px; background: #f44336; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: bold;">Remover</button>
+            </div>
+        `;
+    });
+    
+    container.innerHTML = html;
+}
+
+// Função para remover alergia
+window.removerAlergia = function(index) {
+    const alergiaRemovida = window.alergias[index].nome;
+    window.alergias.splice(index, 1);
+    localStorage.setItem('alergias', JSON.stringify(window.alergias));
+    atualizarListaAlergias();
+    
+    // Mostrar feedback
+    if (window.perfilManager) {
+        window.perfilManager.mostrarFeedback(`Alergia "${alergiaRemovida}" removida com sucesso!`);
+    }
+}
+
+// Carregar alergias quando a página carregar
+document.addEventListener('DOMContentLoaded', function() {
+    // Permitir adicionar alergia pressionando Enter
+    const input = document.getElementById('alergia');
+    if (input) {
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                window.adicionarAlergia();
+            }
+        });
+    }
+    
+    // Carregar alergias salvas
+    setTimeout(() => {
+        atualizarListaAlergias();
+    }, 100);
+});
+
+// Funções de cálculo e desenho do IMC
 const faixas = [
     { de: 0, ate: 18.4, cor: "#00BCD4", nome: "Abaixo do peso" },
     { de: 18.5, ate: 24.9, cor: "#4CAF50", nome: "Normal" },
@@ -395,3 +521,4 @@ function drawGauge(imcValue) {
     ctx.textAlign = "center";
     ctx.fillText(imcValue > 0 ? imcValue.toFixed(1) : "--", centerX, centerY - 40);
 }
+

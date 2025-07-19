@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+.saude-mental-content {
+  padding: 60px 0;
+  background: #f8f9fa;
+}
+
+.saude-mental-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.humor-selector {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.humor-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  border: 2px solid #e1e5e9;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+  min-width: 80px;
+}
+
+.humor-option:hover {
+  border-color: #0072ff;
+  transform: translateY(-2px);
+}
+
+.humor-option.selected {
+  border-color: #0072ff;
+  background: #f0f8ff;
+}
+
+.humor-option .emoji {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.humor-option span {
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  text-align: center;
+}
+
+.respiracao-exercicio {
+  text-align: center;
+}
+
+.respiracao-visual {
+  margin: 30px 0;
+  position: relative;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.circulo-respiracao {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #0072ff;
+  transition: all 2s ease-in-out;
+  margin-bottom: 20px;
+}
+
+.respiracao-instrucao {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0072ff;
+  margin-top: 20px;
+}
+
+.respiracao-controles {
+  margin-top: 20px;
+}
+
+.respiracao-info {
+  margin-top: 10px;
+}
+
+.respiracao-info small {
+  color: #666;
+  font-style: italic;
+}
+
+.meditacao-opcoes {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.meditacao-item {
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #0072ff;
+}
+
+.meditacao-item h4 {
+  color: #0072ff;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.meditacao-item p {
+  color: #666;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.humor-historico {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  align-items: center;
+}
+
+#humorChart1 {
+  display: block;
+}
+#humorChart2 {
+  display: none;
+}
+
+.humor-grafico {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid #e1e5e9;
+}
+
+.humor-estatisticas {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dicas-bem-estar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.dica-item {
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #4CAF50;
+}
+
+.dica-item h4 {
+  color: #4CAF50;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.dica-item p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Responsividade para Saúde Mental */
+@media (max-width: 768px) {
+  .humor-selector {
+    justify-content: center;
+  }
+
+  #humorChart1 {
+    display: none;
+  }
+
+  #humorChart2 {
+    display: block;
+  }
+  
+  .humor-option {
+    min-width: 70px;
+    padding: 10px;
+  }
+  
+  .humor-option .emoji {
+    font-size: 1.5rem;
+  }
+  
+  .humor-historico {
+    grid-template-columns: 1fr;
+  }
+  
+  .humor-estatisticas {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  
+  .respiracao-visual {
+    height: 150px;
+  }
+  
+  .circulo-respiracao {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .dicas-bem-estar {
+    grid-template-columns: 1fr;
+  }
+}

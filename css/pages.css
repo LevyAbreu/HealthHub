@@ -1,0 +1,167 @@
+.page-header {
+  background: linear-gradient(135deg, #0072ff, #00c6ff);
+  color: white;
+  text-align: center;
+  padding: 60px 0;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.page-header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Responsividade para páginas internas */
+@media (max-width: 480px) {
+  .page-header {
+    padding: 40px 0;
+  }
+
+  .page-header h1 {
+    font-size: 2rem;
+  }
+
+  .page-header p {
+    font-size: 1rem;
+  }
+
+  .alimentacao-grid, .exercicios-grid, .agua-grid, .monitoramento-grid, .imc-grid, .perfil-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .exercicio-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .exercicio-detalhes {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .stats-container, .metas-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Perfil mobile */
+  .sync-actions {
+    flex-direction: column;
+  }
+
+  .sync-actions .btn {
+    width: 100%;
+  }
+
+  /* Formulários mobile */
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 16px; /* Evita zoom no iOS */
+  }
+
+  .btn {
+    width: 100%;
+    padding: 15px 24px;
+    font-size: 16px;
+  }
+
+  /* Filtros mobile */
+  .filtros-exercicio {
+    justify-content: center;
+  }
+
+  .filtro-btn {
+    flex: 1;
+    min-width: 80px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .page-header {
+    padding: 40px 0;
+  }
+
+  .page-header h1 {
+    font-size: 2rem;
+  }
+
+  .page-header p {
+    font-size: 1rem;
+  }
+
+  .alimentacao-grid, .exercicios-grid, .agua-grid, .monitoramento-grid, .imc-grid, .perfil-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .exercicio-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .exercicio-detalhes {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .stats-container, .metas-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Perfil mobile */
+  .sync-actions {
+    flex-direction: column;
+  }
+
+  .sync-actions .btn {
+    width: 100%;
+  }
+
+  /* Formulários mobile */
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 16px; /* Evita zoom no iOS */
+  }
+
+  .btn {
+    width: 100%;
+    padding: 15px 24px;
+    font-size: 16px;
+  }
+
+  /* Filtros mobile */
+  .filtros-exercicio {
+    justify-content: center;
+  }
+
+  .filtro-btn {
+    flex: 1;
+    min-width: 80px;
+    text-align: center;
+  }
+}
+
+/* Responsividade para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .alimentacao-grid, .exercicios-grid, .agua-grid, .monitoramento-grid, .imc-grid, .perfil-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+

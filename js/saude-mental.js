@@ -179,20 +179,63 @@ function iniciarMeditacao(tipo) {
 
 // Carregar histórico de humor
 function carregarHistoricoHumor() {
-    // Placeholder para gráfico - em uma implementação real usaria Chart.js ou similar
-    const canvas = document.getElementById('humorChart');
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-        ctx.fillStyle = '#f0f0f0';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#0072ff';
-        ctx.font = '16px Arial';
-        ctx.textAlign = 'center';
-        ctx.fillText('Gráfico do humor será exibido aqui', canvas.width/2, canvas.height/2);
-        ctx.font = '12px Arial';
-        ctx.fillText('(Funcionalidade em desenvolvimento)', canvas.width/2, canvas.height/2 + 20);
+    const dadosHumor = JSON.parse(localStorage.getItem('dadosHumor')) || [];
+  
+    // Extrair dados para o gráfico
+    const dias = dadosHumor.map((_, index) => `Dia ${index + 1}`);
+    const niveisHumor = dadosHumor.map(dado => dado.nivel); // nível de humor de 1 a 5
+  
+    // Configuração do gráfico
+    const config = {
+      type: 'line',
+      data: {
+        labels: dias,
+        datasets: [{
+          label: 'Nível de Humor',
+          data: niveisHumor,
+          backgroundColor: 'rgba(255, 206, 86, 0.4)',
+          borderColor: 'rgba(255, 206, 86, 1)',
+          borderWidth: 2,
+          tension: 0.3,
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            suggestedMax: 5
+          }
+        }
+      }
+    };
+  
+    // Verifica se os dois canvases existem
+    const ctx1 = document.getElementById('humorChart1');
+    const ctx2 = document.getElementById('humorChart2');
+  
+    if (ctx1) {
+      new Chart(ctx1.getContext('2d'), config);
     }
-}
+  
+    if (ctx2) {
+      new Chart(ctx2.getContext('2d'), config);
+    }
+  
+    // Atualizar a lista textual (opcional)
+    const lista = document.getElementById('humorLista');
+    if (lista) {
+      lista.innerHTML = '';
+      dadosHumor.slice(-7).forEach(dado => {
+        const item = document.createElement('div');
+        item.textContent = `Humor: ${dado.nivel}/5 - ${dado.comentario || 'Sem comentário'}`;
+        lista.appendChild(item);
+      });
+    }
+  }
+  
 
 // Atualizar estatísticas
 function atualizarEstatisticas() {
