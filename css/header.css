@@ -71,9 +71,23 @@
 }
 
 .social-icons {
+  position: relative; /* necessário para posicionamento absoluto do pseudo-elemento */
   background-color: #0072ff;
   color: white;
   padding: 10px;
+  z-index: 1;
+}
+
+.social-icons::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -150px;
+  width: 150px;
+  height: 100%;
+  background-color: #0072ff;
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
+  z-index: -1;
 }
 
 .social-icons i {
@@ -93,11 +107,36 @@ i img {
 }
 
 .inf nav {
+  position: relative;
   background-color: #004d80;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   padding: 10px 20px;
   margin: 0;
   width: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.inf nav::before,
+.inf nav::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 40px;
+  height: 100%;
+  background-color: #004d80;
+  z-index: -1;
+}
+
+.inf nav::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: -0.38px;
+  width: 150px;
+  height: 100%;
+  background-color: white;
+  clip-path: polygon(0 0, 100% 0, 0% 100%);
+  z-index: 2;
 }
 
 .nav-links {
@@ -125,7 +164,10 @@ i img {
 /* RESPONSIVIDADE MOBILE */
 @media (max-width: 480px) {
 
-  /* Header mobile - reorganização completa */
+  .social-icons::after {
+    display: none;
+  }
+
   .top-bar-container {
     flex-direction: column;
     align-items: stretch;
@@ -154,10 +196,13 @@ i img {
     display: none;
   }
 
-  /* Menu de navegação mobile */
   .inf nav {
     padding: 10px 15px;
     background-color: #004d80;
+  }
+
+  .inf nav::before {
+    display: none; 
   }
 
   .nav-links {
