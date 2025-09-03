@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle Alimentar - HealthHub</title>
+  <link rel="shortcut icon" href="assets/health_logo.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style_alimentacao.css"/>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-content">
+      <!-- Logo -->
+      <div class="logo">
+        <img src="../assets/health_logo.png" alt="HealthHub Logo">
+        <span><span class="health">Health</span><span class="hub">Hub</span></span>
+      </div>
+
+      <nav class="nav">
+        <a href="home.html">Início</a>
+        <a href="gym.html">Gym</a>
+        <a href="diet.html">Dietas</a>
+        <a href="hidro.html">Hidratação</a>
+        <a href="psico.html">Saúde Mental</a>
+        <a href="sono.html">Qualidade do Sono</a>
+      </nav>
+      <div class="profile">
+        <span id="username">Carregando...</span>
+        <img src="https://img.icons8.com/?size=100&id=77883&format=png&color=FFFFFF" alt="UserIcon">
+        
+        <div class="profile-menu">
+          <a href="perfil.html">Perfil</a>
+          <a href="Config">Configurações</a>
+          <a href="" id="logoutBtn">Sair</a>
+        </div>
+      </div>      
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h2>Controle de <span>Alimentação</span></h2>
+        <p>Registre suas refeições e acompanhe sua ingestão calórica diária.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conteúdo -->
+  <section class="alimentacao-content">
+    <div class="container">
+      <div class="alimentacao-grid">
+        
+        <!-- Formulário de Registro -->
+        <div class="card">
+          <h3>Registrar Refeição</h3>
+          <form id="refeicaoForm">
+            <div class="form-group">
+              <label for="tipoRefeicao">Tipo de Refeição:</label>
+              <select id="tipoRefeicao" required>
+                <option value="">Selecione...</option>
+                <option value="cafe-manha">Café da Manhã</option>
+                <option value="almoco">Almoço</option>
+                <option value="lanche">Lanche</option>
+                <option value="jantar">Jantar</option>
+                <option value="ceia">Ceia</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="alimento">Alimento:</label>
+              <input type="text" id="alimento" placeholder="Ex: Arroz integral" required>
+            </div>
+            <div class="form-group">
+              <label for="quantidade">Quantidade (g):</label>
+              <input type="number" id="quantidade" placeholder="100" required>
+            </div>
+            <div class="form-group">
+              <label for="calorias">Calorias por 100g:</label>
+              <input type="number" id="calorias" placeholder="130" required>
+            </div>
+            <button type="submit" class="btn">Adicionar Refeição</button>
+          </form>
+        </div>
+
+        <!-- Resumo Diário -->
+        <div class="card">
+          <h3>Resumo do Dia</h3>
+          <div class="resumo-calorias">
+            <div class="caloria-item">
+              <span class="label">Meta Diária:</span>
+              <span class="valor" id="metaCalorias">2000 kcal</span>
+            </div>
+            <div class="caloria-item">
+              <span class="label">Consumido:</span>
+              <span class="valor" id="caloriasConsumidas">0 kcal</span>
+            </div>
+            <div class="caloria-item">
+              <span class="label">Restante:</span>
+              <span class="valor" id="caloriasRestantes">2000 kcal</span>
+            </div>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressoCalorias"></div>
+          </div>
+        </div>
+
+        <!-- Lista de Refeições -->
+        <div class="card full-width">
+          <h3>Refeições de Hoje</h3>
+          <div class="refeicoes-lista" id="refeicoesLista">
+            <p class="empty-state">Nenhuma refeição registrada hoje.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="logo">
+            <img src="../assets/health_logo.png" alt="HealthHub Logo">
+            <span><span class="health">Health</span><span class="hub">Hub</span></span>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column"></div>
+          <div class="footer-column">
+            <h4>Sobre</h4>
+            <ul>
+              <li><a href="#our-services">Nossos Serviços</a></li>
+              <li><a href="#planning">Planejamento</a></li>
+              <li><a href="#team">Equipe</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Suporte</h4>
+            <ul>
+              <li><a href="#support-request">Solicitação de Suporte</a></li>
+              <li><a href="#contact">Contato</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Siga-nos</h4>
+            <div class="footer-social-icons">
+              <a href="#"><img src="https://img.icons8.com/?size=100&id=phOKFKYpe00C&format=png&color=FFFFFF" alt="Facebook"></a>
+              <a href="#"><img src="https://img.icons8.com/?size=100&id=106163&format=png&color=FFFFFF" alt="Twitter"></a>
+              <a href="#"><img src="https://img.icons8.com/?size=100&id=32320&format=png&color=FFFFFF" alt="Instagram"></a>
+              <a href="#"><img src="https://img.icons8.com/?size=100&id=8808&format=png&color=FFFFFF" alt="LinkedIn"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p>&copy; 2025 HealthHub. Todos os direitos reservados.</p>
+          <div class="footer-bottom-links">
+            <a href="#privacy">Política de Privacidade</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="../js/script.js"></script>
+  <script type="module" src="../js/alimentacao.js"></script>
+</body>
+</html>

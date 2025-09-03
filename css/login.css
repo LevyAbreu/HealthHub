@@ -1,0 +1,337 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Container principal */
+.login-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    position: relative;
+    overflow: hidden;
+    animation: slideUp 0.6s ease-out;
+}
+
+.login-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd);
+}
+
+/* Logo */
+.logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo h1 {
+    color: #1e3a8a;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+/* Texto de boas-vindas */
+.welcome-text {
+    text-align: center;
+    color: #3b82f6;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+/* Formulário */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: #1e3a8a;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.form-group input[type="email"],
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #f8fafc;
+    color: #111827;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Checkbox + link */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: #3b82f6;
+}
+
+.checkbox-wrapper label {
+    color: #6b7280;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.forgot-password {
+    color: #3b82f6;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: #1e3a8a;
+}
+
+/* Botão */
+.login-button {
+    width: 100%;
+    background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.login-button:hover {
+    background: linear-gradient(135deg, #1e3a8a, #1e40af);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+}
+
+/* Mensagens */
+#errorMessage,
+#successMessage {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    display: none;
+}
+
+#errorMessage {
+    color: #b91c1c;
+    background: #fee2e2;
+    border: 1px solid #fca5a5;
+}
+
+#successMessage {
+    color: #166534;
+    background: #dcfce7;
+    border: 1px solid #86efac;
+}
+
+/* Link de cadastro */
+.signup-link {
+    text-align: center;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.signup-link a {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.signup-link a:hover {
+    color: #1e3a8a;
+}
+
+.form-group input {
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Loading spinner */
+.loading {
+    border: 3px solid #fff;
+    border-top: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 0.8s linear infinite;
+    display: inline-block;
+}
+
+/* Container da página de saúde */
+.health-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    position: relative;
+    overflow: hidden;
+    animation: slideUp 0.6s ease-out;
+}
+
+.health-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd);
+}
+
+/* Inputs numéricos e texto da página de saúde */
+.form-group input[type="number"],
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #f8fafc;
+    color: #111827;
+}
+
+.form-group input[type="number"]:focus,
+.form-group input[type="text"]:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Botão salvar */
+.save-button {
+    width: 100%;
+    background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.save-button:hover {
+    background: linear-gradient(135deg, #1e3a8a, #1e40af);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 30px 20px;
+        margin: 10px;
+    }
+    
+    .welcome-text {
+        font-size: 20px;
+    }
+    
+    .logo h1 {
+        font-size: 24px;
+    }
+}
+
+/* Animações */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsividade específica */
+@media (max-width: 480px) {
+    .health-container {
+        padding: 30px 20px;
+        margin: 10px;
+    }
+    
+    .welcome-text {
+        font-size: 20px;
+    }
+}

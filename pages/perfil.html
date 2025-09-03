@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil do Usuário - HealthHub</title>
+  <link rel="shortcut icon" href="../assets/health_logo.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style_perfil.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-content">
+      <!-- Logo -->
+      <div class="logo">
+        <img src="../assets/health_logo.png" alt="HealthHub Logo">
+        <span><span class="health">Health</span><span class="hub">Hub</span></span>
+      </div>
+
+      <nav class="nav">
+        <a href="home.html">Início</a>
+        <a href="gym.html">Gym</a>
+        <a href="diet.html">Dietas</a>
+        <a href="hidro.html">Hidratação</a>
+        <a href="psico.html">Saúde Mental</a>
+        <a href="sono.html">Qualidade do Sono</a>
+      </nav>
+
+      <div class="profile">
+        <span id="username">Carregando...</span>
+        <img src="https://img.icons8.com/?size=100&id=77883&format=png&color=FFFFFF" alt="UserIcon">
+        
+        <div class="profile-menu">
+          <a href="perfil.html">Perfil</a>
+          <a href="config.html">Configurações</a>
+          <a href="" id="logoutBtn">Sair</a>
+        </div>
+      </div>      
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h2>Perfil do <span>Usuário</span></h2>
+        <p>Gerencie suas informações pessoais, estatísticas e configurações</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conteúdo -->
+  <section class="perfil-content">
+    <div class="container">
+      <div class="perfil-grid">
+        
+        <!-- Informações Pessoais -->
+        <div class="card">
+          <h3>Informações Pessoais</h3>
+          <div class="profile-info">
+
+            <div class="profile-field">
+              <p><strong>Nome:</strong> <span id="nome"></span></p>
+              <span class="edit-icon" data-field="Nome">&#9998;</span>
+            </div>
+
+            <div class="profile-field">
+              <p><strong>Idade:</strong> <span id="idade"></span></p>
+              <span class="edit-icon" data-field="Idade">&#9998;</span>
+            </div>
+
+            <div class="profile-field">
+              <p><strong>Altura:</strong> <span id="altura"></span></p>
+              <span class="edit-icon" data-field="Altura">&#9998;</span>
+            </div>
+
+            <div class="profile-field">
+              <p><strong>Peso:</strong> <span id="peso"></span></p>
+              <span class="edit-icon" data-field="Peso">&#9998;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Estatísticas -->
+        <div class="card">
+          <h3>Suas Estatísticas</h3>
+          <div class="stats-container">
+            <div class="stats-grid">
+              <div class="stat-item">
+                <span class="stat-value" id="imcAtual">--</span>
+                <span class="stat-label">IMC Atual</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value" id="totalCalorias">0</span>
+                <span class="stat-label">Calorias esta semana</span>
+              </div>
+            </div>
+
+            <p class="imc-title">IMC</p>
+            <div class="imc-gauge-wrapper">
+              <canvas id="imcGauge" width="350" height="250"></canvas>
+            </div>
+            <div class="imc-result">
+              <p id="imcDiagnostico"></p>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Configurações -->
+        <div class="card">
+          <h3>Configurações</h3>
+          <div class="config-item">
+            <label><input type="checkbox" id="notificacoes"> Receber notificações</label>
+          </div>
+          <div class="config-item">
+            <label><input type="checkbox" id="syncAuto"> Sincronização automática</label>
+          </div>
+          <div class="form-group">
+            <label for="metaCalorias">Meta diária de calorias:</label>
+            <input type="number" id="metaCalorias" value="2000" min="1000" max="5000">
+          </div>
+          <div class="form-group">
+            <label for="metaAgua">Meta diária de água (ml):</label>
+            <input type="number" id="metaAgua" value="2000" min="1000" max="5000">
+          </div>
+          <button onclick="perfilManager.salvarConfiguracoes()" class="btn">Salvar Configurações</button>
+
+          <h3>Sincronização de Dados</h3>
+          <div class="sync-info">
+            <p>Status: <span id="statusSync">Verificando...</span></p>
+            <p>Última sincronização: <span id="ultimaSync">--</span></p>
+            <p>Dados pendentes: <span id="dadosPendentes">0</span></p>
+          </div>
+          <div class="sync-actions">
+            <button onclick="perfilManager.sincronizarAgora()" class="btn">Sincronizar Agora</button>
+            <button onclick="perfilManager.exportarDados()" class="btn btn-secondary">Exportar Dados</button>
+          </div>
+        </div>
+
+        <!-- Lista de Alergias -->
+        <div class="card full-width">
+          <h3>Alergias</h3>
+          <div class="alergias-lista" id="alergiasLista">
+            <!-- Itens de alergias virão via JS -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="logo">
+            <img src="../assets/health_logo.png" alt="HealthHub Logo">
+            <span><span class="health">Health</span><span class="hub">Hub</span></span>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column"></div>
+          <div class="footer-column">
+            <h4>Sobre</h4>
+            <ul>
+              <li><a href="#our-services">Nossos Serviços</a></li>
+              <li><a href="#planning">Planejamento</a></li>
+              <li><a href="#team">Equipe</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Suporte</h4>
+            <ul>
+              <li><a href="#support-request">Solicitação de Suporte</a></li>
+              <li><a href="#contact">Contato</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Siga-nos</h4>
+            <div class="footer-social-icons">
+              <a href="#"><img src="https://img.icons8.com/?size=100&id=phOKFKYpe00C&format=png&color=FFFFFF" alt="Facebook"></a>
+              <a href="#"><img src="https://img.icons8.com/?size=100&id=106163&format=png&color=FFFFFF" alt="Twitter"></a>
+              <a href="https://www.instagram.com/healthhub_app/"><img src="https://img.icons8.com/?size=100&id=32320&format=png&color=FFFFFF" alt="Instagram"></a>
+              <a href="#"><img src="https://img.icons8.com/?size=100&id=8808&format=png&color=FFFFFF" alt="LinkedIn"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p>&copy; 2025 HealthHub. Todos os direitos reservados.</p>
+          <div class="footer-bottom-links">
+            <a href="#privacy">Política de Privacidade</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="../js/script.js"></script>
+  <script type="module" src="../js/perfil.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle Alimentar - HealthHub</title>
+  <link rel="shortcut icon" href="assets/health_logo.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style_hidro.css"/>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-content">
+      <!-- Logo -->
+      <div class="logo">
+        <img src="../assets/health_logo.png" alt="HealthHub Logo">
+        <span><span class="health">Health</span><span class="hub">Hub</span></span>
+      </div>
+
+      <nav class="nav">
+        <a href="home.html">Início</a>
+        <a href="gym.html">Gym</a>
+        <a href="diet.html">Dietas</a>
+        <a href="hidro.html">Hidratação</a>
+        <a href="psico.html">Saúde Mental</a>
+        <a href="sono.html">Qualidade do Sono</a>
+      </nav>
+      <div class="profile">
+        <span id="username">Carregando...</span>
+        <img src="https://img.icons8.com/?size=100&id=77883&format=png&color=FFFFFF" alt="UserIcon">
+        
+        <div class="profile-menu">
+          <a href="perfil.html">Perfil</a>
+          <a href="Config">Configurações</a>
+          <a href="" id="logoutBtn">Sair</a>
+        </div>
+      </div>      
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h2>Controle de <span>Hidratação</span></h2>
+        <p>Registre suas bebidas e acompanhe sua ingestão de água.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="water-content">
+    <div class="container">
+        <div class="grid-container">
+            <!-- Card 1 - Inserir bebida -->
+            <div class="card">
+              <h3>Adicionar bebida</h3>
+              <form id="drinkForm">
+                <label for="drinkType">Tipo:</label>
+                <input type="text" id="drinkType" placeholder="Ex: Água, Suco" required />
+          
+                <label for="drinkAmount">Quantidade (ml):</label>
+                <input type="number" id="drinkAmount" min="50" step="50" required />
+          
+                <button type="submit" class="btn">Adicionar</button>
+              </form>
+            </div>
+          
+            <!-- Card 2 - Meta -->
+            <div class="card">
+              <h3>Meta diária</h3>
+              <p id="goalDisplay">Meta: 2000ml</p>
+              <p id="progressDisplay">Consumido: 0ml</p>
+            </div>
+          
+            <!-- Card 3 - Garrafa animada -->
+            <div class="card">
+              <h3>Garrafa</h3>
+              <canvas id="bottleCanvas" width="120" height="300"></canvas>
+            </div>
+          
+            <!-- Card 4 - Histórico -->
+            <div class="card full-width">
+              <h3>Histórico</h3>
+              <ul id="historyList"></ul>
+            </div>
+          </div>
+    </div>
+  </section>
+  
+    <!-- Rodapé -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="logo">
+            <img src="../assets/health_logo.png" alt="HealthHub Logo">
+            <span><span class="health">Health</span><span class="hub">Hub</span></span>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column"></div>
+          <div class="footer-column">
+            <h4>Sobre</h4>
+            <ul>
+              <li><a href="#our-services">Nossos Serviços</a></li>
+              <li><a href="#planning">Planejamento</a></li>
+              <li><a href="#team">Equipe</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Suporte</h4>
+            <ul>
+              <li><a href="#support-request">Solicitação de Suporte</a></li>
+              <li><a href="#contact">Contato</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Siga-nos</h4>
+            <div class="footer-social-icons">
+              <a href="#"><img src="https://img.icons8.com/?size=100&id=phOKFKYpe00C&format=png&color=FFFFFF" alt="Facebook"></a>
+              <a href="#"><img src="https://img.icons8.com/?size=100&id=106163&format=png&color=FFFFFF" alt="Twitter"></a>
+              <a href="#"><img src="https://img.icons8.com/?size=100&id=32320&format=png&color=FFFFFF" alt="Instagram"></a>
+              <a href="#"><img src="https://img.icons8.com/?size=100&id=8808&format=png&color=FFFFFF" alt="LinkedIn"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p>&copy; 2025 HealthHub. Todos os direitos reservados.</p>
+          <div class="footer-bottom-links">
+            <a href="#privacy">Política de Privacidade</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script type="module" src="../js/script.js"></script>
+</body>
+</html>

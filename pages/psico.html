@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saúde Mental - HealthHub</title>
+  <meta name="description" content="Cuide da sua saúde mental com exercícios de respiração, meditação guiada e monitoramento do humor no HealthHub.">
+  <!--Styles-->
+  <link rel="shortcut icon" href="assets/health_logo.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style_mental.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-content">
+      <!-- Logo -->
+      <div class="logo">
+        <img src="../assets/health_logo.png" alt="HealthHub Logo">
+        <span><span class="health">Health</span><span class="hub">Hub</span></span>
+      </div>
+
+      <nav class="nav">
+        <a href="home.html">Início</a>
+        <a href="gym.html">Gym</a>
+        <a href="diet.html">Dietas</a>
+        <a href="hidro.html">Hidratação</a>
+        <a href="psico.html">Saúde Mental</a>
+        <a href="sono.html">Qualidade do Sono</a>
+      </nav>
+      <div class="profile">
+        <span id="username">Carregando...</span>
+        <img src="https://img.icons8.com/?size=100&id=77883&format=png&color=FFFFFF" alt="UserIcon">
+        
+        <div class="profile-menu">
+          <a href="perfil.html">Perfil</a>
+          <a href="Config">Configurações</a>
+          <a href="" id="logoutBtn">Sair</a>
+        </div>
+      </div>      
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h2>Saúde <span>Mental</span></h2>
+        <p>Cuide da sua mente com exercícios de respiração, meditação e monitoramento do humor.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conteúdo -->
+  <section class="saude-mental-content">
+    <div class="container">
+      <div class="saude-mental-grid">
+
+        <!-- Monitoramento de Humor -->
+        <div class="card">
+          <h3>Como você está se sentindo hoje?</h3>
+          <div class="humor-selector">
+            <div class="humor-option" data-humor="muito-bem">
+              <div class="emoji">😊</div>
+              <span>Muito Bem</span>
+            </div>
+            <div class="humor-option" data-humor="bem">
+              <div class="emoji">🙂</div>
+              <span>Bem</span>
+            </div>
+            <div class="humor-option" data-humor="neutro">
+              <div class="emoji">😐</div>
+              <span>Neutro</span>
+            </div>
+            <div class="humor-option" data-humor="triste">
+              <div class="emoji">😔</div>
+              <span>Triste</span>
+            </div>
+            <div class="humor-option" data-humor="ansioso">
+              <div class="emoji">😰</div>
+              <span>Ansioso</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="humor-nota">Observações (opcional):</label>
+            <textarea id="humor-nota" placeholder="Como foi seu dia? O que influenciou seu humor?"></textarea>
+          </div>
+          <button class="btn" onclick="registrarHumor()">Registrar Humor</button>
+        </div>
+
+        <!-- Respiração -->
+        <div class="card">
+          <h3>Exercícios de Respiração</h3>
+          <p>Pratique técnicas de respiração para reduzir o estresse e ansiedade.</p>
+          <div class="respiracao-exercicio">
+            <div class="respiracao-visual">
+              <div class="circulo-respiracao" id="circuloRespiracao"></div>
+              <div class="respiracao-instrucao" id="respiracaoInstrucao">Clique em "Iniciar" para começar</div>
+            </div>
+            <div class="respiracao-controles">
+              <button class="btn" id="btnRespiracao" onclick="iniciarRespiracao()">Iniciar Respiração 4-7-8</button>
+              <div class="respiracao-info">
+                <small>Inspire por 4 segundos, segure por 7, expire por 8</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Meditação -->
+        <div class="card">
+          <h3>Meditação Guiada</h3>
+          <p>Sessões de meditação para diferentes momentos do dia.</p>
+          <div class="meditacao-opcoes">
+            <div class="meditacao-item">
+              <h4>Meditação Matinal (5 min)</h4>
+              <p>Comece o dia com energia positiva</p>
+              <button class="btn btn-secondary" onclick="iniciarMeditacao('matinal')">Iniciar</button>
+            </div>
+            <div class="meditacao-item">
+              <h4>Pausa para Relaxar (3 min)</h4>
+              <p>Reduza o estresse durante o dia</p>
+              <button class="btn btn-secondary" onclick="iniciarMeditacao('pausa')">Iniciar</button>
+            </div>
+            <div class="meditacao-item">
+              <h4>Meditação Noturna (10 min)</h4>
+              <p>Prepare-se para uma noite tranquila</p>
+              <button class="btn btn-secondary" onclick="iniciarMeditacao('noturna')">Iniciar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Histórico -->
+        <div class="card full-width">
+          <h3>Histórico do Seu Humor</h3>
+          <div class="humor-historico">
+            <div class="humor-grafico">
+              <canvas id="humorChart1" width="900" height="200"></canvas>
+            </div>
+            <div class="humor-estatisticas">
+              <div class="stat-item">
+                <span class="stat-numero" id="diasRegistrados">0</span>
+                <span class="stat-label">Dias Registrados</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-numero" id="humorMedio">-</span>
+                <span class="stat-label">Humor Médio</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-numero" id="sequenciaBoa">0</span>
+                <span class="stat-label">Sequência de Dias Bons</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dicas -->
+        <div class="card full-width">
+          <h3>Dicas de Bem-Estar Mental</h3>
+          <div class="dicas-bem-estar">
+            <div class="dica-item">
+              <h4>💤 Durma Bem</h4>
+              <p>Mantenha uma rotina de sono regular. Durma de 7-9 horas por noite para melhor saúde mental.</p>
+            </div>
+            <div class="dica-item">
+              <h4>🚶‍♀️ Exercite-se</h4>
+              <p>Atividade física regular libera endorfinas, melhorando o humor e reduzindo o estresse.</p>
+            </div>
+            <div class="dica-item">
+              <h4>🤝 Conecte-se</h4>
+              <p>Mantenha contato com amigos e família. Relacionamentos saudáveis são essenciais para o bem-estar.</p>
+            </div>
+            <div class="dica-item">
+              <h4>🧘‍♂️ Pratique Mindfulness</h4>
+              <p>Dedique alguns minutos por dia para estar presente no momento atual.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="logo">
+            <img src="../assets/health_logo.png" alt="HealthHub Logo">
+            <span><span class="health">Health</span><span class="hub">Hub</span></span>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column"></div>
+          <div class="footer-column">
+            <h4>Sobre</h4>
+            <ul>
+              <li><a href="#our-services">Nossos Serviços</a></li>
+              <li><a href="#planning">Planejamento</a></li>
+              <li><a href="#team">Equipe</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Suporte</h4>
+            <ul>
+              <li><a href="#support-request">Solicitação de Suporte</a></li>
+              <li><a href="#contact">Contato</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Siga-nos</h4>
+            <div class="footer-social-icons">
+              <a href="#"><img src="https://img.icons8.com/?size=100&id=phOKFKYpe00C&format=png&color=FFFFFF" alt="Facebook"></a>
+              <a href="#"><img src="https://img.icons8.com/?size=100&id=106163&format=png&color=FFFFFF" alt="Twitter"></a>
+              <a href="https://www.instagram.com/healthhub_app" aria-label="Instagram"><img src="https://img.icons8.com/?size=100&id=32320&format=png&color=FFFFFF" alt="Instagram"></a>
+              <a href="#"><img src="https://img.icons8.com/?size=100&id=8808&format=png&color=FFFFFF" alt="LinkedIn"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p>&copy; 2025 HealthHub. Todos os direitos reservados.</p>
+          <div class="footer-bottom-links">
+            <a href="#privacy">Política de Privacidade</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="../js/script.js"></script>
+  <script src="../js/saude-mental.js"></script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+body {
+  font-family: 'Varela Round', sans-serif;
+  color: #333;
+  background-color: #f8f9fa;
+}
+
+.btn {
+  background: linear-gradient(90deg, #0066cc, #0099ff);
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.perfil-content {
+  padding: 60px 0;
+}
+
+.perfil-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profile-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.profile-field p {
+  margin: 0;
+  font-size: 15px;
+  color: #333;
+}
+
+.edit-icon {
+  cursor: pointer;
+  font-size: 18px;
+  color: #0072ff;
+  margin-left: 12px;
+  transition: transform 0.2s;
+}
+
+.edit-icon:hover {
+  transform: scale(1.2);
+}
+
+.stats-container {
+  position: relative;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  padding-top: 16px;
+}
+
+.stat-item {
+  background-color: #fff;
+  padding: 24px 16px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-3px);
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0072ff;
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.imc-title {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 600;
+  color: #444;
+}
+
+.imc-gauge-wrapper {
+  text-align: center;
+  margin: 20px 0;
+}
+
+#imcGauge {
+  display: block;
+  margin: 0 auto;
+}
+
+.imc-result {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #005fcc;
+  font-size: 16px;
+}
+
+.imc-result p {
+  margin: 0;
+  font-size: 18px;
+}
+
+.alergias-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.alergia-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.alergia-nome {
+  font-weight: 600;
+  color: #333;
+}
+
+.alergia-comidas {
+  font-size: 14px;
+  color: #777;
+  font-style: italic;
+}
+
+.alergias-empty {
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+  padding: 10px;
+}

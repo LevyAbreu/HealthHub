@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitoramento de Sono - HealthHub</title>
+  <link rel="shortcut icon" href="assets/health_logo.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style_sono.css"/>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-content">
+      <!-- Logo -->
+      <div class="logo">
+        <img src="../assets/health_logo.png" alt="HealthHub Logo">
+        <span><span class="health">Health</span><span class="hub">Hub</span></span>
+      </div>
+
+      <nav class="nav">
+        <a href="home.html">Início</a>
+        <a href="gym.html">Gym</a>
+        <a href="diet.html">Dietas</a>
+        <a href="hidro.html">Hidratação</a>
+        <a href="psico.html">Saúde Mental</a>
+        <a href="sono.html">Qualidade do Sono</a>
+      </nav>
+      <div class="profile">
+        <span id="username">Carregando...</span>
+        <img src="https://img.icons8.com/?size=100&id=77883&format=png&color=FFFFFF" alt="UserIcon">
+        
+        <div class="profile-menu">
+          <a href="perfil.html">Perfil</a>
+          <a href="Config">Configurações</a>
+          <a href="" id="logoutBtn">Sair</a>
+        </div>
+      </div>      
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h2>Monitoramento do <span>Sono</span></h2>
+        <p>Acompanhe e melhore a qualidade do seu sono para uma vida mais saudável.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conteúdo -->
+  <section class="sono-content">
+    <div class="container">
+      <div class="sono-grid">
+
+        <!-- Registro de Sono -->
+        <div class="card">
+          <h3>Registrar Sono de Hoje</h3>
+          <form id="sonoForm">
+            <div class="form-group">
+              <label for="horaDormir">Que horas você foi dormir?</label>
+              <input type="time" id="horaDormir" required>
+            </div>
+            <div class="form-group">
+              <label for="horaAcordar">Que horas você acordou?</label>
+              <input type="time" id="horaAcordar" required>
+            </div>
+            <div class="form-group">
+              <label for="qualidadeSono">Como foi a qualidade do seu sono?</label>
+              <select id="qualidadeSono" required>
+                <option value="">Selecione...</option>
+                <option value="excelente">Excelente</option>
+                <option value="boa">Boa</option>
+                <option value="regular">Regular</option>
+                <option value="ruim">Ruim</option>
+                <option value="pessima">Péssima</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="observacoesSono">Observações (opcional):</label>
+              <textarea id="observacoesSono" placeholder="Ex: acordei várias vezes, sonhei muito, etc."></textarea>
+            </div>
+            <button type="submit" class="btn">Registrar Sono</button>
+          </form>
+        </div>
+
+        <!-- Estatísticas -->
+        <div class="card">
+          <h3>Suas Estatísticas de Sono</h3>
+          <div class="sono-stats">
+            <div class="stat-item">
+              <span class="stat-numero" id="horasSonoMedia">0h</span>
+              <span class="stat-label">Média de Sono</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-numero" id="qualidadeMedia">-</span>
+              <span class="stat-label">Qualidade Média</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-numero" id="diasRegistrados">0</span>
+              <span class="stat-label">Dias Registrados</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-numero" id="metaCumprida">0%</span>
+              <span class="stat-label">Meta Cumprida</span>
+            </div>
+          </div>
+          <div class="sono-visual">
+            <h4>Última Noite</h4>
+            <div class="sono-info" id="ultimaNoite">
+              <p>Nenhum registro encontrado</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Configuração da Meta -->
+        <div class="card">
+          <h3>Meta de Sono</h3>
+          <div class="form-group">
+            <label for="metaHoras">Quantas horas você quer dormir por noite?</label>
+            <select id="metaHoras">
+              <option value="6">6 horas</option>
+              <option value="7">7 horas</option>
+              <option value="8" selected>8 horas</option>
+              <option value="9">9 horas</option>
+              <option value="10">10 horas</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="horarioIdealDormir">Horário ideal para dormir:</label>
+            <input type="time" id="horarioIdealDormir" value="22:00">
+          </div>
+          <button class="btn" onclick="salvarMetaSono()">Salvar Meta</button>
+          <div class="meta-info">
+            <h4>Lembretes</h4>
+            <label><input type="checkbox" id="lembreteDormir"> Lembrar de ir dormir no horário</label>
+            <label><input type="checkbox" id="lembreteAcordar"> Lembrar de registrar o sono</label>
+          </div>
+        </div>
+
+        <!-- Histórico -->
+        <div class="card full-width">
+          <h3>Histórico dos Últimos 7 Dias</h3>
+          <div class="sono-historico">
+            <div class="sono-grafico">
+              <canvas id="sonoChart1" width="1050" height="200"></canvas>
+              <canvas id="sonoChart2" width="290" height="200"></canvas>
+            </div>
+            <div class="sono-lista" id="sonoLista"></div>
+          </div>
+        </div>
+
+        <!-- Dicas -->
+        <div class="card full-width">
+          <h3>Dicas para um Sono Melhor</h3>
+          <div class="dicas-sono">
+            <div class="dica-item">
+              <h4>🌙 Rotina Noturna</h4>
+              <p>Estabeleça uma rotina relaxante antes de dormir. Desligue eletrônicos 1 hora antes.</p>
+            </div>
+            <div class="dica-item">
+              <h4>🛏️ Ambiente Ideal</h4>
+              <p>Mantenha o quarto escuro, silencioso e entre 18-22°C.</p>
+            </div>
+            <div class="dica-item">
+              <h4>☕ Evite Estimulantes</h4>
+              <p>Não consuma cafeína ou álcool 4-6h antes de dormir. Prefira chás relaxantes.</p>
+            </div>
+            <div class="dica-item">
+              <h4>⏰ Horários Regulares</h4>
+              <p>Durma e acorde no mesmo horário, inclusive nos fins de semana.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="logo">
+            <img src="../assets/health_logo.png" alt="HealthHub Logo">
+            <span><span class="health">Health</span><span class="hub">Hub</span></span>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column"></div>
+          <div class="footer-column">
+            <h4>Sobre</h4>
+            <ul>
+              <li><a href="#our-services">Nossos Serviços</a></li>
+              <li><a href="#planning">Planejamento</a></li>
+              <li><a href="#team">Equipe</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Suporte</h4>
+            <ul>
+              <li><a href="#support-request">Solicitação de Suporte</a></li>
+              <li><a href="#contact">Contato</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Siga-nos</h4>
+            <div class="footer-social-icons">
+              <a href="#"><img src="https://img.icons8.com/?size=100&id=phOKFKYpe00C&format=png&color=FFFFFF" alt="Facebook"></a>
+              <a href="#"><img src="https://img.icons8.com/?size=100&id=106163&format=png&color=FFFFFF" alt="Twitter"></a>
+              <a href="#"><img src="https://img.icons8.com/?size=100&id=32320&format=png&color=FFFFFF" alt="Instagram"></a>
+              <a href="#"><img src="https://img.icons8.com/?size=100&id=8808&format=png&color=FFFFFF" alt="LinkedIn"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p>&copy; 2025 HealthHub. Todos os direitos reservados.</p>
+          <div class="footer-bottom-links">
+            <a href="#privacy">Política de Privacidade</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="../js/script.js"></script>
+  <script type="module" src="js/sono.js"></script>
+</body>
+</html>

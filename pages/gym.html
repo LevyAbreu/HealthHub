@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gym - HealthHub</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/gym.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-content">
+      <!-- Logo -->
+      <div class="logo">
+        <img src="../assets/health_logo.png" alt="HealthHub Logo">
+        <span><span class="health">Health</span><span class="hub">Hub</span></span>
+      </div>
+
+      <nav class="nav">
+        <a href="home.html">Início</a>
+        <a href="gym.html">Gym</a>
+        <a href="diet.html">Dietas</a>
+        <a href="hidro.html">Hidratação</a>
+        <a href="psico.html">Saúde Mental</a>
+        <a href="sono.html">Qualidade do Sono</a>
+      </nav>
+      <div class="profile">
+        <span id="username">Carregando...</span>
+        <img src="https://img.icons8.com/?size=100&id=77883&format=png&color=FFFFFF" alt="UserIcon">
+        
+        <div class="profile-menu">
+          <a href="perfil.html">Perfil</a>
+          <a href="Config">Configurações</a>
+          <a href="" id="logoutBtn">Sair</a>
+        </div>
+      </div>      
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h2>Gerenciamento de <span>Exercícios</span></h2>
+        <p>Acompanhe suas atividades físicas, defina metas e monitore seu desempenho.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Exercícios -->
+  <section class="exercicios-content">
+    <div class="container">
+      <div class="exercicios-grid">
+
+        <!-- Metas Semanais -->
+        <div class="card">
+          <h3>Metas da Semana</h3>
+          <div class="metas-container">
+            <div class="meta-item">
+              <span class="meta-label">Exercícios:</span>
+              <span class="meta-valor" id="metaExercicios">0/5</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Calorias:</span>
+              <span class="meta-valor" id="metaCalorias">0/2000 kcal</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Tempo:</span>
+              <span class="meta-valor" id="metaTempo">0/300 min</span>
+            </div>
+          </div>
+          <div class="progress-container">
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressoSemanal"></div>
+            </div>
+            <span class="progress-text" id="progressoTexto">0% da meta semanal</span>
+          </div>
+        </div>
+
+        <!-- Registro de Exercício -->
+        <div class="card">
+          <h3>Registrar Exercício</h3>
+          <form id="exercicioForm">
+            <div class="form-group">
+              <label for="tipoExercicio">Tipo de Exercício:</label>
+              <select id="tipoExercicio" required>
+                <option value="">Selecione...</option>
+                <option value="caminhada">Caminhada</option>
+                <option value="corrida">Corrida</option>
+                <option value="ciclismo">Ciclismo</option>
+                <option value="natacao">Natação</option>
+                <option value="musculacao">Musculação</option>
+                <option value="yoga">Yoga</option>
+                <option value="pilates">Pilates</option>
+                <option value="danca">Dança</option>
+                <option value="futebol">Futebol</option>
+                <option value="basquete">Basquete</option>
+                <option value="tenis">Tênis</option>
+                <option value="outro">Outro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="duracao">Duração (minutos):</label>
+              <input type="number" id="duracao" placeholder="30" required>
+            </div>
+            <div class="form-group">
+              <label for="intensidade">Intensidade:</label>
+              <select id="intensidade" required>
+                <option value="">Selecione...</option>
+                <option value="baixa">Baixa</option>
+                <option value="moderada">Moderada</option>
+                <option value="alta">Alta</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="observacoes">Observações:</label>
+              <textarea id="observacoes" placeholder="Como se sentiu durante o exercício?"></textarea>
+            </div>
+            <button type="submit" class="btn">Registrar Exercício</button>
+          </form>
+        </div>
+
+        <!-- Estatísticas -->
+        <div class="card">
+          <h3>Estatísticas</h3>
+          <div class="stats-container">
+            <div class="stat-item">
+              <span class="stat-numero" id="totalExercicios">0</span>
+              <span class="stat-label">Exercícios este mês</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-numero" id="totalTempo">0</span>
+              <span class="stat-label">Minutos este mês</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-numero" id="totalCalorias">0</span>
+              <span class="stat-label">Calorias queimadas</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-numero" id="exercicioFavorito">-</span>
+              <span class="stat-label">Exercício favorito</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Histórico -->
+        <div class="card full-width">
+          <h3>Histórico de Exercícios</h3>
+          <div class="filtros-exercicio">
+            <button class="filtro-btn active" data-periodo="hoje">Hoje</button>
+            <button class="filtro-btn" data-periodo="semana">Esta Semana</button>
+            <button class="filtro-btn" data-periodo="mes">Este Mês</button>
+          </div>
+          <div class="exercicios-lista" id="exerciciosLista">
+            <p class="empty-state">Nenhum exercício registrado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="logo">
+            <img src="../assets/health_logo.png" alt="HealthHub Logo">
+            <span><span class="health">Health</span><span class="hub">Hub</span></span>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column"></div>
+          <div class="footer-column">
+            <h4>Sobre</h4>
+            <ul>
+              <li><a href="#our-services">Nossos Serviços</a></li>
+              <li><a href="#planning">Planejamento</a></li>
+              <li><a href="#team">Equipe</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Suporte</h4>
+            <ul>
+              <li><a href="#support-request">Solicitação de Suporte</a></li>
+              <li><a href="#contact">Contato</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Siga-nos</h4>
+            <div class="footer-social-icons">
+              <a href="#"><img src="https://img.icons8.com/?size=100&id=phOKFKYpe00C&format=png&color=FFFFFF" alt="Facebook"></a>
+              <a href="#"><img src="https://img.icons8.com/?size=100&id=106163&format=png&color=FFFFFF" alt="Twitter"></a>
+              <a href="https://www.instagram.com/healthhub_app/"><img src="https://img.icons8.com/?size=100&id=32320&format=png&color=FFFFFF" alt="Instagram"></a>
+              <a href="#"><img src="https://img.icons8.com/?size=100&id=8808&format=png&color=FFFFFF" alt="LinkedIn"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p>&copy; 2025 HealthHub. Todos os direitos reservados.</p>
+          <div class="footer-bottom-links">
+            <a href="#privacy">Política de Privacidade</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="../js/script.js"></script>
+  <script type="module" src="../js/exercicios.js"></script>
+</body>
+</html>
