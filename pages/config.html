@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perfil do Usuário - HealthHub</title>
+  <title>Configurações - HealthHub</title>
   <link rel="shortcut icon" href="../assets/health_logo.png">
   <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/style_perfil.css">
 </head>
 <body>
   <!-- Header -->
@@ -30,7 +29,7 @@
       <div class="profile">
         <span id="username">Carregando...</span>
         <img src="https://img.icons8.com/?size=100&id=77883&format=png&color=FFFFFF" alt="UserIcon">
-        
+
         <div class="profile-menu">
           <a href="perfil.html">Perfil</a>
           <a href="config.html">Configurações</a>
@@ -54,64 +53,60 @@
   <section class="perfil-content">
     <div class="container">
       <div class="perfil-grid">
-        
-        <!-- Informações Pessoais -->
+
+        <!-- Configurações -->
         <div class="card">
-          <h3>Informações Pessoais</h3>
-          <div class="profile-info">
+          <h3>Configurações</h3>
+          <div class="config-item">
+            <label><input type="checkbox" id="notificacoes"> Receber notificações</label>
+          </div>
+          <div class="config-item">
+            <label><input type="checkbox" id="syncAuto"> Sincronização automática</label>
+          </div>
+          <div class="form-group">
+            <label for="metaCalorias">Meta diária de calorias:</label>
+            <input type="number" id="metaCalorias" value="2000" min="1000" max="5000">
+          </div>
+          <div class="form-group">
+            <label for="metaAgua">Meta diária de água (ml):</label>
+            <input type="number" id="metaAgua" value="2000" min="1000" max="5000">
+          </div>
+          <button onclick="perfilManager.salvarConfiguracoes()" class="btn">Salvar Configurações</button>
 
-            <div class="profile-field">
-              <p><strong>Nome:</strong> <span id="nome"></span></p>
-              <span class="edit-icon" data-field="Nome">&#9998;</span>
-            </div>
-
-            <div class="profile-field">
-              <p><strong>Idade:</strong> <span id="idade"></span></p>
-              <span class="edit-icon" data-field="Idade">&#9998;</span>
-            </div>
-
-            <div class="profile-field">
-              <p><strong>Altura:</strong> <span id="altura"></span></p>
-              <span class="edit-icon" data-field="Altura">&#9998;</span>
-            </div>
-
-            <div class="profile-field">
-              <p><strong>Peso:</strong> <span id="peso"></span></p>
-              <span class="edit-icon" data-field="Peso">&#9998;</span>
-            </div>
+          <h3>Sincronização de Dados</h3>
+          <div class="sync-info">
+            <p>Status: <span id="statusSync">Verificando...</span></p>
+            <p>Última sincronização: <span id="ultimaSync">--</span></p>
+            <p>Dados pendentes: <span id="dadosPendentes">0</span></p>
+          </div>
+          <div class="sync-actions">
+            <button onclick="perfilManager.sincronizarAgora()" class="btn">Sincronizar Agora</button>
+            <button onclick="perfilManager.exportarDados()" class="btn btn-secondary">Exportar Dados</button>
           </div>
         </div>
 
-        <!-- Estatísticas -->
+        <!-- Configuração da Meta de Sono -->
         <div class="card">
-          <h3>Suas Estatísticas</h3>
-          <div class="stats-container">
-            <div class="stats-grid">
-              <div class="stat-item">
-                <span class="stat-value" id="imcAtual">--</span>
-                <span class="stat-label">IMC Atual</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-value" id="totalCalorias">0</span>
-                <span class="stat-label">Calorias esta semana</span>
-              </div>
-            </div>
-
-            <p class="imc-title">IMC</p>
-            <div class="imc-gauge-wrapper">
-              <canvas id="imcGauge" width="350" height="250"></canvas>
-            </div>
-            <div class="imc-result">
-              <p id="imcDiagnostico"></p>
-            </div>
+          <h3>Meta de Sono</h3>
+          <div class="form-group">
+            <label for="metaHoras">Quantas horas você quer dormir por noite?</label>
+            <select id="metaHoras">
+              <option value="6">6 horas</option>
+              <option value="7">7 horas</option>
+              <option value="8" selected>8 horas</option>
+              <option value="9">9 horas</option>
+              <option value="10">10 horas</option>
+            </select>
           </div>
-        </div>
-
-        <!-- Lista de Alergias -->
-        <div class="card full-width">
-          <h3>Alergias</h3>
-          <div class="alergias-lista" id="alergiasLista">
-            <!-- Itens de alergias virão via JS -->
+          <div class="form-group">
+            <label for="horarioIdealDormir">Horário ideal para dormir:</label>
+            <input type="time" id="horarioIdealDormir" value="22:00">
+          </div>
+          <button class="btn" onclick="salvarMetaSono()">Salvar Meta</button>
+          <div class="meta-info">
+            <h4>Lembretes</h4>
+            <label><input type="checkbox" id="lembreteDormir"> Lembrar de ir dormir no horário</label>
+            <label><input type="checkbox" id="lembreteAcordar"> Lembrar de registrar o sono</label>
           </div>
         </div>
 
@@ -170,6 +165,22 @@
 
   <!-- Scripts -->
   <script type="module" src="../js/script.js"></script>
-  <script type="module" src="../js/perfil.js"></script>
+  <script>
+    function salvarMetaSono() {
+      const horas = document.getElementById('metaHoras').value;
+      const horario = document.getElementById('horarioIdealDormir').value;
+      const lembreteDormir = document.getElementById('lembreteDormir').checked;
+      const lembreteAcordar = document.getElementById('lembreteAcordar').checked;
+
+      console.log("Meta de Sono salva:", {
+        horas,
+        horario,
+        lembreteDormir,
+        lembreteAcordar
+      });
+
+      alert("Meta de sono salva com sucesso!");
+    }
+  </script>
 </body>
 </html>
