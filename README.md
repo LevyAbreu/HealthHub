@@ -4,7 +4,7 @@
 
 O **HealthHub** é um sistema web de monitoramento da saúde que integra funcionalidades essenciais para o bem-estar diário do usuário. O projeto oferece uma interface visual agradável e acessível, permitindo acompanhar aspectos como alimentação, atividades físicas, hidratação e IMC.
 
-> Acesse a versão online: [HealthHub](https://levyabreu.github.io/HealthHub/)
+> Acesse a versão online: [HealthHub](https://healthhub-ten.vercel.app/pages/login.html)
 
 ---
 
